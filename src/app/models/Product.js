@@ -11,7 +11,7 @@ const Product = new Schema({
   name: {type: String},
   description: {type: String},
   image: {type: String},
-  price: {type: String},
+  price: {type: Number},
   slug: { type: String, slug: 'name', unique: true },
   },
   {

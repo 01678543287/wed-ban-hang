@@ -4,7 +4,7 @@
     <form class="mt-4" method="POST" action="/products/{{product._id}}?_method=PUT">
         <div class="form-group">
             <label for="name">Tên sản phẩm</label>
-            <input type="text" class="form-control" value="{{product.name}}" id="name" name="name">
+            <input type="text" class="form-control" value="{{product.name}}" id="name" name="name" required>
         </div>
         <div class="form-group">
             <label for="description">Mô tả</label>
@@ -12,11 +12,11 @@
         </div>
         <div class="form-group">
             <label for="image">Hình ảnh</label>
-            <input type="text" class="form-control" value="{{product.image}}" id="image" name="image">
+            <input type="text" class="form-control" value="{{product.image}}" id="image" name="image" required>
         </div>
         <div class="form-group">
             <label for="price">Giá</label>
-            <input type="text" class="form-control" value="{{product.price}}" id="price" name="price">
+            <input type="text" class="form-control" value="{{product.price}}" id="price" name="price" required>
         </div>
         
         <button type="submit" class="btn btn-primary">Lưu lại</button>

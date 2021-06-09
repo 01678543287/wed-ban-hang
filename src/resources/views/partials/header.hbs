@@ -81,17 +81,30 @@
                     </form>
                 </li>
                 <li class="nav-list-key__item">
-                    <a href="login.html" class="header__nav-user">
+                    <a href="/user/sign-in" class="header__nav-user">
                         <i class="fas fa-user header__nav--icon"></i>
                     </a>
 
                     <ul class="header-subnav-user">
-                        <li class="subnav-user-item">
-                            <a href="login.html" class>Đăng nhập</a>
-                        </li>
-                        <li class="subnav-user-item">
-                            <a href="register.html" class>Đăng ký</a>
-                        </li>
+                        {{# if login}}
+                           <li class="subnav-user-item">
+                               <a href="/user/profile" class>Thông tin cá nhân</a>
+                            </li>
+                          <li class="subnav-user-item">
+                              <a href="/user/logout" class>Đăng xuất</a>
+                            </li>
+                        {{else}}
+
+                           <li class="subnav-user-item">
+                             <a href="/user/sign-in" class>Đăng nhập</a>
+                          </li>
+                            <li class="subnav-user-item">
+                              <a href="/user/sign-up" class>Đăng ký</a>
+                            </li>
+
+                        {{/if}}
+
+
                          <li class="subnav-user-item">
                             <a href="/products/create" class>Thêm sản phẩm</a>
                         </li>

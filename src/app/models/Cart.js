@@ -1,6 +1,7 @@
 
 module.exports = function Cart(oldCart) {
     this.items = oldCart.items || {};
+    this.nameProduct = oldCart.nameProduct || "";
     this.totalQty = oldCart.totalQty || 0;
     this.totalPrice = oldCart.totalPrice || 0;
 
@@ -11,6 +12,8 @@ module.exports = function Cart(oldCart) {
         }
         storedItem.qty++;
         storedItem.price = storedItem.item.price * storedItem.qty;
+
+        this.nameProduct += storedItem.item.name + ", ";
         this.totalQty++;
         this.totalPrice += storedItem.item.price;
     }
