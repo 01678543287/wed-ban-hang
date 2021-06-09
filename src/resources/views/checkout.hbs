@@ -7,55 +7,36 @@
         {{!-- <div id="charge-error" class="alert alert-danger {{#if noError}}hidden{{/if}}">
             {{errMsg}}
         </div> --}}
-        <form action="/check-out" method="post" id="checkout-form">
+        <form action="/checkout/final" method="POST">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="name">Họ Tên</label>
-                        <input type="text" id="name" class="form-control" required>
+                        <input type="text" id="nameKH" class="form-control" required name="nameKH">
                     </div>
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="address">Địa chỉ</label>
-                        <input type="text" id="address" class="form-control" required>
+                        <input type="text" id="address" class="form-control" required name="address">
                     </div>
                 </div>
                 <hr>
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-name">Số Điện Thoại</label>
-                        <input type="text" id="billing_address_phone" class="form-control" required>
+                        <input type="text" id="phone" class="form-control" required name="phone">
                     </div>
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="card-number">Email</label>
-                        <input type="text" id="checkout_user_email" class="form-control" required>
+                        <input type="text" id="email" class="form-control" required name="email">
                     </div>
                 </div>
                 
             </div>
-            <button id="btn-checkout-cart" type="submit" class="btn btn-success">Hoàn tất đơn hàng</button>
+            <button type="submit" class="btn btn-primary">Hoàn tất đơn hàng</button>
         </form>
     </div>
 </div>
-
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script type="text/javascript" src="javascripts/checkout.js"></script>
-
-
-<form name="checkout-cart-form" method="POST" ></form>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function(){
-        const btnCheckOutCart = document.getElementById('btn-checkout-cart');
-        var checkOutForm = document.forms['checkout-cart-form'];
-
-        btnCheckOutCart.click(function() {
-            checkOutForm.action = '/checkout/final';
-            checkOutForm.submit();
-        });
-console.log(btnCheckOutCart)
-    });
-</script>

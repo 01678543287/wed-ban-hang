@@ -16,7 +16,6 @@ class CartController {
         }
         cart.add(product, product.id);
         req.session.cart = cart;
-        console.log(req.session.cart);
         res.redirect('back');
       }); 
     }
