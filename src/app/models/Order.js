@@ -8,6 +8,7 @@ const Schema = mongoose.Schema;
 
 
 const Order = new Schema({
+  user: {type: mongoose.SchemaTypes, ref: 'User' },
   nameKH: {type: String, require: true},
   cart: {type: Object, require: true},
   address: {type: String, require: true},

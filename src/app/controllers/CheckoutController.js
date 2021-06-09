@@ -17,7 +17,17 @@ class CheckoutController {
   //[POST] /checkout/final
   checkOutFinal(req, res, next) {
     const cart = new Cart(req.session.cart);
+    const username="";
+    if(req.user)
+    {
+      username = "Khách vãng lai";
+    }
+    else
+    {
+      username = req.user.username;
+    }
     const order = new Order({
+      user: username,
       nameKH: req.body.nameKH,
       cart: cart,
       address: req.body.address,
