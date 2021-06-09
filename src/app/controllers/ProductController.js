@@ -20,8 +20,8 @@ class SiteController {
     }
     // [POST] /products/store
     store(req, res, next) {
-        const abc = new Product(req.body);
-        abc
+        const product = new Product(req.body);
+        product
             .save()
             .then(() => res.redirect('/'))
             .catch((error) => {});

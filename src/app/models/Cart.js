@@ -1,16 +1,20 @@
 
 module.exports = function Cart(oldCart) {
     this.items = oldCart.items || {};
+    this.nameProduct = oldCart.nameProduct || "";
     this.totalQty = oldCart.totalQty || 0;
     this.totalPrice = oldCart.totalPrice || 0;
 
     this.add = function(item, id) {
         var storedItem = this.items[id];
         if(!storedItem) {
-            storedItem = this.items[id] = {item: item, qty: 0, price: 0};
+            storedItem = this.items[id] = {item: item, name: "", qty: 0, price: 0};
         }
+
         storedItem.qty++;
         storedItem.price = storedItem.item.price * storedItem.qty;
+
+        this.nameProduct += storedItem.item.name + ", ";
         this.totalQty++;
         this.totalPrice += storedItem.item.price;
     }

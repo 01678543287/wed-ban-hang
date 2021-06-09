@@ -19,10 +19,10 @@ const Order = new Schema({
   },
 );
 
-Order.plugin(mongooseDelete, {
-  overrideMethods: 'all',
- });
-mongoose.plugin(slug);
+// Order.plugin(mongooseDelete, {
+//   overrideMethods: 'all',
+//  });
+// mongoose.plugin(slug);
 
 
 module.exports = mongoose.model('Order', Order);

@@ -18,7 +18,7 @@ class CheckoutController {
   checkOutFinal(req, res, next) {
     const cart = new Cart(req.session.cart);
     const order = new Order({
-      nameKH: req.body.name,
+      nameKH: req.body.nameKH,
       cart: cart,
       address: req.body.address,
       numberPhone: req.body.phone,
