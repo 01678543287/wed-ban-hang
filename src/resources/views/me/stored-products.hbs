@@ -1,0 +1,87 @@
+<div class="mt-4">
+    <div>
+      <h3>Khóa học của tôi</h3>
+      <a href="/me/trash/products">Thùng rác ({{deletedCount}})</a>
+    </div>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Mô tả</th>
+                <th scope="col" colspan="2">Thời gian thêm</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.createdAt}}</td>
+                <td>
+                    <a href="/products/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                    <a href="" class="btn btn-Xoa" data-toggle="modal" data-id="{{this._id}}" data-target="#btnXoa-Product-modal">Xóa</a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+              <td colspan="5" class="text-center">
+                Bạn chưa đăng khóa học nào.
+                <a href="/products/create">Thêm sản phẩm</a>
+              </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+{{!-- Confirm delete course --}}
+<div class="modal" id="btnXoa-Product-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Bạn chắc chắn muốn xóa khóa học?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-product" type="button" class="btn btn-danger">Xóa</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Delete hidden form--}}
+<form name="delete-product-form" method="POST" ></form>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function(){
+        var productId;
+        var deleteForm = document.forms['delete-product-form'];
+        var btnDeleteProduct = document.getElementById('btn-delete-product');
+        //var checkboxAll = $('#checkbox-all-in');
+        //var productItemCheckBox = $('input[name="productsIds[]"]');
+        //var checkAllSubmitBtn = $('#btn-check-all-submit');
+
+        // khi dialog confirm da clicked
+        $('#btnXoa-Product-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            productId = button.data('id');
+         });
+
+        //khi nut xoa khoa hoc duoc clicked
+        btnDeleteProduct.onclick = function() {
+            deleteForm.action = '/products/' + productId +'?_method=DELETE';
+            deleteForm.submit();
+        }
+    });
+
+    
+</script>

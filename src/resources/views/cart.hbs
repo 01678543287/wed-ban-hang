@@ -1,0 +1,89 @@
+{{!-- {{#if products}}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
+            <ul class="list-group">
+                {{#each products}}
+                    <li class="list-group-item">
+                        <strong>{{this.item.name}}</strong>
+                        <span class="badge">{{this.qty}}</span>
+                        <span class="label label-success">{{this.price}}đ</span>
+                        <div class="btn-group">
+                            <button class="btn btn-primary btn-xs dropdown-toggle" type="button">Action <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Reduce by 1</a></li>
+                                <li><a href="#">Remove by All</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                {{/each}}
+                
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
+            <strong>Total: {{totalPrice}}</strong>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
+            <button type="button" class="btn btn-success">Thanh toán</button>
+        </div>
+    </div>
+{{else}}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
+            <h2>Giỏ hàng trống.</h2>
+        </div>
+    </div>
+{{/if}}
+ --}}
+
+
+{{#if products}}
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col" colspan="2">Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.item.name}}</td>
+                <td>{{this.qty}}</td>
+                <td>{{this.price}}</td>
+                <td>
+                    <a href="" class="btn btn-Reduce" data-toggle="modal" data-id="{{this._id}}" data-target="#btnReduce-Product-modal">-</a>
+                    <a href="" class="btn btn-Add" data-toggle="modal" data-id="{{this._id}}" data-target="#btnAdd-Product-modal">+</a>
+                    <a href="" class="btn btn-Remove" data-toggle="modal" data-id="{{this._id}}" data-target="#btnRemove-Product-modal">Xóa</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
+            <strong>Tổng tiền: {{session.cart.totalPrice}}đ</strong>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
+            <a href="/checkout" type="button" class="btn btn-success">Thanh toán</a>
+        </div>
+    </div>
+{{else}}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
+            <h2>Giỏ hàng trống.</h2>
+        </div>
+    </div>
+{{/if}}
+

@@ -1,0 +1,38 @@
+<div class="mt-4">
+    <div class="row">
+        <div class="col-lg-3" >
+            <button class="btn btn-add-cart" style="border: none; background: #000000; color: #FFFFFF;height: 40px;width: 200px;" data-id="{{product._id}}">Thêm vào giỏ hàng</button>
+            <p>{{product.description}}</p>
+            <p>Giá: {{product.price}}</p>
+        </div>
+
+        <div class="col-lg-9">
+            <h2>{{product.name}}</h2>
+            <img width="348" height="358" src="{{product.image}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            
+        </div>
+    </div>
+</div>
+
+<form name="add-cart-form" method="GET" ></form>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        var productId;
+        var addCartForm = document.forms['add-cart-form'];
+        var addCartBtn = $('.btn-add-cart');
+
+        // Restore btn clicked
+        addCartBtn.click(function(e){
+          //e.preventDefault();
+
+          var productId = $(this).data('id');
+          addCartForm.action = '/cart/' + productId +'/add-cart';
+          addCartForm.submit();
+        });
+
+    });
+
+</script>

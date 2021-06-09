@@ -1,0 +1,118 @@
+ <header class="header">
+    <div class="header__wrap">
+        <div class="header__hotline">
+            <a href="tel:+028 9999 0090">Hotline: +888 182 717</a>
+        </div>
+        <div class="header__nav">
+            <div class="header__nav-logo">
+                <a href="/" class="nav-logo"><img
+                        src="/img/logo/logospecial.png"
+                        alt="XXSTORE" width="200px" height="auto"></a>
+            </div>
+
+            <ul class="header__nav-list-page">
+                <li class="header__nav-item">
+                    <a href="/">TRANG CHỦ</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="/products">
+                        SẢN PHẨM
+                        <i class="fas fa-angle-down item-icon"></i>
+                    </a>
+
+                    <ul class="header__nav-subnav
+                        header__nav-item--subnav-SP">
+                        <li>
+                            <a href="">HÀNG MỚI <i class="fas
+                                    fa-angle-right sub-icon"></i></a>
+                        </li>
+                        <li>
+                            <a href="">ÁO THUN <i class="fas
+                                    fa-angle-right sub-icon"></i></a>
+                        </li>
+                        <li>
+                            <a href="">ÁO SƠ MI <i class="fas
+                                    fa-angle-right sub-icon"></i></a>
+                        </li>
+                        <li>
+                            <a href="">ÁO KHOÁC <i class="fas
+                                    fa-angle-right sub-icon"></i></a>
+                        </li>
+                        <li>
+                            <a href="">QUẦN DÀI <i class="fas
+                                    fa-angle-right sub-icon"></i></a>
+                        </li>
+                        <li>
+                            <a href="">QUẦN SHORT <i class="fas
+                                    fa-angle-right sub-icon"></i></a>
+                        </li>
+                        <li>
+                            <a href="">BOXER</a>
+
+                        </li>
+                        <li>
+                            <a href="">PHỤ KIỆN <i class="fas
+                                    fa-angle-right sub-icon"></i></a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="header__nav-item">
+                    <a href="/news">TIN TỨC</a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="/shop-system">HỆ THỐNG CỬA HÀNG </a>
+
+                </li>
+            </ul>
+
+            <ul class="header__nav-list-key">
+                <li class="nav-list-key__item">
+                    <a href="search.html" class="header__nav-search">
+                        <i class="fas fa-search header__nav--icon"></i>
+                    </a>
+                    <form accept="" class="search-wrap">
+                        <input type="search" name="" id=""
+                            placeholder="Nhập từ khóa..."
+                            class="header__search-input">
+                        <i class="fas fa-search header__nav--icon
+                            input-search-icon"></i>
+                    </form>
+                </li>
+                <li class="nav-list-key__item">
+                    <a href="login.html" class="header__nav-user">
+                        <i class="fas fa-user header__nav--icon"></i>
+                    </a>
+
+                    <ul class="header-subnav-user">
+                        <li class="subnav-user-item">
+                            <a href="login.html" class>Đăng nhập</a>
+                        </li>
+                        <li class="subnav-user-item">
+                            <a href="register.html" class>Đăng ký</a>
+                        </li>
+                         <li class="subnav-user-item">
+                            <a href="/products/create" class>Thêm sản phẩm</a>
+                        </li>
+                         <li class="subnav-user-item">
+                            <a href="/me/stored/products" class>Sản phẩm của tôi</a>
+                        </li>
+                    </ul>
+
+                </li>
+                <li class="nav-list-key__item">
+                    <a href="/cart" class="header__nav-shopping">
+                        <i class="fas fa-shopping-cart
+                            header__nav--icon"></i>
+                        GIỎ HÀNG
+                        <span class="badge">{{session.cart.totalQty}}</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</header>
