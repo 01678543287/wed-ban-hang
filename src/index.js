@@ -35,7 +35,7 @@ const db = require('./config/db');
 db.connect();
 //use 
 app.use(methodOverride('_method'));
-//css
+//logo img
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(

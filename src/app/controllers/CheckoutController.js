@@ -17,8 +17,8 @@ class CheckoutController {
   //[POST] /checkout/final
   checkOutFinal(req, res, next) {
     const cart = new Cart(req.session.cart);
-    const username="";
-    if(req.user)
+    var username="";
+    if(!req.user)
     {
       username = "Khách vãng lai";
     }
@@ -31,7 +31,7 @@ class CheckoutController {
       nameKH: req.body.nameKH,
       cart: cart,
       address: req.body.address,
-      numberPhone: req.body.phone,
+      phone: req.body.phone,
       email: req.body.email,
     });
     order

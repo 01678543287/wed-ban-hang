@@ -70,3 +70,9 @@ function isLoggedIn(req, res, next){
     }
     res.redirect('/user/sign-in');
 }
+
+// bat du kiện thay đổi logout,profile
+
+// function changelink(){
+//     console.log(1+2);
+// }
