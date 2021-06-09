@@ -7,7 +7,7 @@ const checkoutRouter = require('./checkout');
 
 function route(app) {
     // app.use('/', userRouter);
-    app.use('cart', cartRouter);
+    app.use('/cart', cartRouter);
     app.use('/checkout', checkoutRouter);
     app.use('/products', productsRouter);
     app.use('/me', meRouter);
