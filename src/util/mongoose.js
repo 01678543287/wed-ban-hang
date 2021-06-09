@@ -4,5 +4,13 @@ module.exports = {
     },
     mongooseToObject: function (mongoose) {
         return mongoose ? mongoose.toObject() : mongoose;
+    },
+    mutipleOrderToRevenue : function(mongooses){
+        var revenue = 0;
+        mongooses.map(mongoose => {
+            revenue +=  mongoose.cart.totalPrice;
+            require.revenue = revenue;
+        })
+        return revenue;
     }
 };

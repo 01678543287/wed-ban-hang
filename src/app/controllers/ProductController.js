@@ -23,7 +23,7 @@ class SiteController {
         const product = new Product(req.body);
         product
             .save()
-            .then(() => res.redirect('/'))
+            .then(() => res.redirect('/products/create'))
             .catch((error) => {});
     }
     // [GET] /products/:slug

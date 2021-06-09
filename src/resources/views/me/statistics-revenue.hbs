@@ -1,0 +1,34 @@
+<div class="mt-4">
+
+    <h3>Bảng thống kê doanh thu theo tháng</h3>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên khách hàng</th>
+                <th scope="col">Thời gian mua</th>
+                <th scope="col">Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each orders}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.user}}</td>
+                <td>{{this.updatedAt}}</td>
+                <td>{{this.cart.totalPrice}}</td>
+            </tr>
+            {{else}}
+            <tr>
+              <td colspan="5" class="text-center">
+                Bạn chưa có đơn hàng nào trong tháng này
+              </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{revenue}}
+</div>
+
+

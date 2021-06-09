@@ -1,5 +1,7 @@
 const Product = require('../models/Product');
+const Order = require('../models/Order');
 const {mutipleMongooseToObject} = require('../../util/mongoose');
+const {mutipleOrderToRevenue} = require('../../util/mongoose');
 
 
 class SiteController {
@@ -19,6 +21,26 @@ class SiteController {
         Product.findDeleted({})
             .then(products => res.render('me/trash-products', {
                 products: mutipleMongooseToObject(products)
+            }))
+            .catch(next);
+    }
+    // [GET] /me/statistics/reverues
+    statisticsRevenue(req, res, next){
+        const date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        if(Object.keys(req.query).length !== 0){
+            year = req.query.year;
+            month = req.query.month - 1;
+        }
+        Order.find({updatedAt : {
+            "$gte": new Date(year, month , 0, ), 
+            "$lt": new Date(year, month + 1, 0)
+            }
+        })
+            .then(orders => res.render('me/statistics-revenue', {
+                orders : mutipleMongooseToObject(orders),
+                revenue : mutipleOrderToRevenue(orders)
             }))
             .catch(next);
     }
