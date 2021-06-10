@@ -55,16 +55,18 @@ passport.use('local.signup',new LocalStrategy({
    passReqToCallback:true
 },function(req, username, password,done) {
   
-User.findOne({ 'username': username }, function(err, user) {
-       if (err) { return done(err); }
-       if (!user) {
-         return done(null, false, { message : 'Not user found'})
-       }
-       if(!user.validPassword(password)){
-           return done(null,false,{message:'Wrong password'})
-       }
-        return done(null, user);
-    
+User.findOneWithDeleted({ 'username': username }, function(err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message : 'Sai tên đăng nhập hoặc mật khẩu'})
+      }
+      if(!user.validPassword(password)){
+          return done(null,false,{message:'Sai tên đăng nhập hoặc mật khẩu'})
+      }
+      if(user.deletedAt != null){
+        return done(null, false, {message : 'Tài khoản hiện đã bị khóa. Vui lòng liên hệ shop'})
+      }
+      return done(null, user);
      });
    }
  ));    
@@ -79,7 +81,7 @@ User.findOne({ 'username': username }, function(err, user) {
        return done(err);
       }
      if (!user.validPassword(password)){
-       return done(null, false, {message: 'Wrong password'})
+       return done(null, false, {message: 'Sai mật khẩu'})
        
      }
      const newUser = user;

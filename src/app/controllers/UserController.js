@@ -34,7 +34,11 @@ class UserController {
     }
     // [GET] /user/sign-in
     signIn(req, res, next){
-        res.render('user/sign-in')
+        var messages = req.flash('error');
+        res.render('user/sign-in', {
+            messages: messages,
+            hasErrors: messages.length > 0,
+        })
     }
     //[GET] /user/log-out
     logOut(req, res, next){
@@ -61,6 +65,23 @@ class UserController {
     changePasswordConfirm(req, res, next){
         User.findById(req.session.passport.user)
     }
-
+    //[DELETE] user/:id/force
+    forceDelete(req, res, next) {
+        User.deleteOne({_id: req.params.id},)
+            .then(() => res.redirect('/me/blacklist/user'))
+            .catch(next);
+    }
+    //[PATCH] user/:id/restore
+    restore(req, res, next) {
+        User.restore({_id: req.params.id},)
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+    //[DELETE] user/:id
+    delete(req, res, next) {
+        User.delete({_id: req.params.id},)
+            .then(() => res.redirect('/me/stored/user'))
+            .catch(next);
+    }
 }
 module.exports = new UserController();
