@@ -85,14 +85,13 @@ ul {
 
 .anh-bia{
 
-    position:  absolute;
-    left: 257px; 
+    position:  relative;
 
 }
 
 .toolbar{
-    width: 850px;
-    height: 40px;
+    width: auto;
+    height: auto;
     padding: 5px 5px 5px 0px;
     border: 1px solid black;
     margin-top: 20px;
@@ -107,9 +106,10 @@ span > a{
     margin-left: 18px;
 }
 .location {
-  position:  absolute;
-  display: inline-block;
-  left: 250px; 
-  top: 480px;
-  padding: 30px 30px 30px 30px;
+  position: relative; 
+  height: 100%; 
+  background-color:aliceblue;
+  display: flex;
+  flex-wrap: wrap;
+
 }
