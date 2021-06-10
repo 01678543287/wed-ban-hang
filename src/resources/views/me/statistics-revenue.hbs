@@ -18,6 +18,11 @@
                 <td>{{this.user}}</td>
                 <td>{{this.updatedAt}}</td>
                 <td>{{this.cart.totalPrice}}</td>
+                {{#each this.cart.items}}
+                    {{this.item.name}}
+                    {{this.qty}}
+                    {{this.item.price}}
+                {{/each}}
             </tr>
             {{else}}
             <tr>
