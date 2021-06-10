@@ -9,7 +9,7 @@ router.get('/sign-up', notLoggedIn, UserController.create);
 router.get('/change-password', isLoggedIn, UserController.changePassword);
 router.post('/change-password', isLoggedIn,
     passport.authenticate('local.changePassword', {
-        successRedirect: '/',
+        successRedirect: '/user/profile',
         failureRedirect: '/user/change-password',
         failureFlash: true
     })
@@ -41,7 +41,7 @@ router.post('/sign-up', [
 
 router.get('/sign-in', notLoggedIn, UserController.signIn);
 router.post('/sign-in',
-    passport.authenticate('local.signin', {successRedirect: '/',
+    passport.authenticate('local.signin', {successRedirect: '/user/profile',
         failureRedirect: '/user/sign-in',
         failureFlash: true
 })
@@ -71,8 +71,3 @@ function isLoggedIn(req, res, next){
     res.redirect('/user/sign-in');
 }
 
-// bat du kiện thay đổi logout,profile
-
-// function changelink(){
-//     console.log(1+2);
-// }

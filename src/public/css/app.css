@@ -4,7 +4,114 @@
   border-radius: 50%;
   margin-right: 4px; }
 
+.button-form {
+  position: absolute;
+  right: 0;
+  top: 0; }
 
 .container-fluid {
-  padding: unset;
-}
+  padding: unset; }
+
+.nav-options {
+  border: 1px solid #3333332e;
+  border-bottom: unset;
+  margin: 10px; }
+
+.nav-content .item-name {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px;
+  text-decoration: unset;
+  color: #333;
+  border-bottom: 1px solid #3333332e; }
+
+.nav-options .nav-content:hover .item-name {
+  /* color: #333; */
+  background-color: #17a2b830; }
+
+.container-form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: var(--container-width);
+  padding: 0 15px; }
+
+.breadcrumb-news,
+.title-register,
+.title-login,
+.breadcrumb-login {
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  vertical-align: middle; }
+
+.form-custom {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff; }
+
+.form-group {
+  margin-bottom: unset; }
+
+.form-search,
+.form-login,
+.form-register {
+  width: 60%;
+  padding: 10px; }
+
+.form-search > input,
+.form-login > input,
+.form-group > input {
+  padding: 10px;
+  width: 100%;
+  border: 2px solid #333;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5; }
+
+.form-search > label,
+.form-login > label,
+.form-group > label {
+  font-size: 20px;
+  font-weight: 500;
+  min-width: 100px;
+  padding: 5px 0;
+  margin: 10px 0; }
+
+.form-search > p,
+.form-login > p,
+.form-register > p {
+  padding: 10px 0;
+  font-size: 16px;
+  margin: 5px 0;
+  font-weight: 500; }
+
+.form-search > .btn,
+.form-login > .btn,
+.form-register > .btn {
+  position: unset; }
+
+.form-custom {
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-direction: row;
+  /* padding: 0px 0; */ }
+
+.infor-store {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 10px; }
+
+.infor-store .infor-icon {
+  font-size: 20px;
+  color: red; }

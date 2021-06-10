@@ -81,9 +81,16 @@
                     </form>
                 </li>
                 <li class="nav-list-key__item">
-                    <a href="/user/sign-in" class="header__nav-user">
-                        <i class="fas fa-user header__nav--icon"></i>
-                    </a>
+                    {{#if login}}
+                         <a href="/user/profile" class="header__nav-user">
+                              <i class="fas fa-user header__nav--icon"></i>
+                         </a>                   
+                    {{else}}
+                         <a href="/user/sign-in" class="header__nav-user">
+                              <i class="fas fa-user header__nav--icon"></i>
+                         </a>
+                    {{/if}}
+
 
                     <ul class="header-subnav-user">
                         {{# if login}}
@@ -103,14 +110,6 @@
                             </li>
 
                         {{/if}}
-
-
-                         <li class="subnav-user-item">
-                            <a href="/products/create" class>Thêm sản phẩm</a>
-                        </li>
-                         <li class="subnav-user-item">
-                            <a href="/me/stored/products" class>Sản phẩm của tôi</a>
-                        </li>
                     </ul>
 
                 </li>
