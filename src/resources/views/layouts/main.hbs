@@ -45,12 +45,24 @@
 
             {{>header}}
 
-            <div class="container">
+            <div class="wrapper-pages">
                 {{{body}}}
             </div>
 
 
-             {{>footer}}
+            {{!-- {{>footer}} --}}
+
+            <script>
+                var $ = document.getElementsByClassName("slider-section")[0];
+                var $$ = document.getElementsByClassName("wrapper-pages")[0];
+                if($ == undefined){
+                    $$.classList.add("container");
+                }
+                else {
+                    $$.classList.add("container-fluid");
+                }
+            </script>
+        </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
