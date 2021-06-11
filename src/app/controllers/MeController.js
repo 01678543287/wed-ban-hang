@@ -40,6 +40,7 @@ class SiteController {
             }
         })
             .then(orders => res.render('me/statistics-revenue', {
+                month: month,
                 orders : mutipleMongooseToObject(orders),
                 revenue : mutipleOrderToRevenue(orders)
             }))

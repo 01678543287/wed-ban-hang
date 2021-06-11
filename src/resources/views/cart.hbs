@@ -57,6 +57,7 @@
 
         <div style="overflow-x:auto;">
             <table id="table-cart" class="table mt-3">
+<<<<<<< HEAD
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -86,6 +87,35 @@
                     </tr>
                     {{/each}}
                 </tbody>
+=======
+                  <thead>
+                       <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Edit</th>
+                        </tr>
+                 </thead>
+                  <tbody>
+                     {{#each products}}
+                        <tr>
+                            <td scope="row">{{sum @index 1}}</td>
+                            <td>{{this.item.name}}</td>
+                            <td>
+                                <a href="/cart/{{this.item._id}}/reduce" class="btn btn-Reduce font-weight-bold mr-4">-</a>
+                                {{this.qty}}
+                                <a href="/cart/{{this.item._id}}/add" class="btn btn-Reduce font-weight-bold mr-4">+</a>
+                                
+                            </td>
+                            <td>{{this.price}}</td>
+                            <td>
+                                <a href="/cart/{{this.item._id}}/remove" class="btn btn-Remove font-weight-bold " >Xóa</a>
+                            </td>
+                        </tr>
+                     {{/each}}
+                 </tbody>
+>>>>>>> d1c2aabb11fa5566834d4a0557455bd531b19b78
             </table>
 
         </div>

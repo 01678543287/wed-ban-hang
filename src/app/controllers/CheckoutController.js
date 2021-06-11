@@ -1,5 +1,6 @@
 const Cart = require('../models/Cart');
 const Order = require('../models/Order');
+const User = require('../models/User');
 
 const {mutipleMongooseToObject} = require('../../util/mongoose');
 const { session } = require('passport');
@@ -12,7 +13,8 @@ class CheckoutController {
       return res.redirect('cart');
     }
     var cart = new Cart(req.session.cart);
-    res.render('checkout', {total: cart.totalPrice});
+    res.render('checkout', {total: cart.totalPrice},);
+    
   }
   //[POST] /checkout/final
   checkOutFinal(req, res, next) {
