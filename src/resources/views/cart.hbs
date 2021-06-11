@@ -69,13 +69,14 @@
                             <td scope="row">{{sum @index 1}}</td>
                             <td>{{this.item.name}}</td>
                             <td>
-                                <a href="" class="btn btn-Reduce font-weight-bold mr-4" data-toggle="modal" data-id="{{this._id}}" data-target="#btnReduce-Product-modal">-</a>
+                                <a href="/cart/{{this.item._id}}/reduce" class="btn btn-Reduce font-weight-bold mr-4">-</a>
                                 {{this.qty}}
-                                <a href=""  class="btn btn-Add font-weight-bold ml-4" data-toggle="modal" data-id="{{this._id}}" data-target="#btnAdd-Product-modal">+</a>                                
+                                <a href="/cart/{{this.item._id}}/add" class="btn btn-Reduce font-weight-bold mr-4">+</a>
+                                
                             </td>
                             <td>{{this.price}}</td>
                             <td>
-                                <a href="" class="btn btn-Remove font-weight-bold " data-toggle="modal" data-id="{{this._id}}" data-target="#btnRemove-Product-modal">Xóa</a>
+                                <a href="/cart/{{this.item._id}}/remove" class="btn btn-Remove font-weight-bold " >Xóa</a>
                             </td>
                         </tr>
                      {{/each}}
