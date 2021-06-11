@@ -116,15 +116,18 @@
   font-size: 20px;
   color: red; }
 
+#table-products,
 #table-cart {
   text-align: center;
   font-size: larger inherit;
   font-weight: 600; }
 
+#table-products tr:hover,
 #table-cart tr:hover {
   background-color: #f2f2f2;
   cursor: pointer; }
 
+#table-products th,
 #table-cart th {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -132,6 +135,7 @@
   background-color: #04AA6D;
   color: white; }
 
+#table-products th, #table-products td,
 #table-cart th, #table-cart td {
   border: 2px solid #dee2e6;
   padding: 4px;

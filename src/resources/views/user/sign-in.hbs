@@ -31,7 +31,9 @@
             <form action="/user/sign-in" method="POST" class="form-register">
                 <h3>VUI LÒNG ĐĂNG NHẬP</h3>
                 <p>Nếu bạn có một tài khoản, xin vui lòng đăng nhập</p>
-                {{messages}}
+                <strong style="color: red; font-size: 16px; font-weight: 600;">
+                   {{messages}}
+                </strong>
                 <div class="form-group">
                     <label for="Tên đăng nhập">Name *</label>
                     <input type="text" class="form-control" name="username"

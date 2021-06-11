@@ -4,20 +4,21 @@
       <a href="/me/trash/products">Thùng rác ({{deletedCount}})</a>
     </div>
 
-    <table class="table mt-4">
+    <table id="table-products" class="table mt-4">
         <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col" style="min-width: 50px;">#</th>
                 <th scope="col">Tên sản phẩm</th>
                 <th scope="col">Giá</th>
                 <th scope="col">Mô tả</th>
-                <th scope="col" colspan="2">Thời gian thêm</th>
+                <th scope="col" >Thời gian thêm</th>
+                <th scope="col" >Edit</th>
             </tr>
         </thead>
         <tbody>
             {{#each products}}
             <tr>
-                <th scope="row">{{sum @index 1}}</th>
+                <td scope="row">{{sum @index 1}}</td>
                 <td>{{this.name}}</td>
                 <td>{{this.price}}</td>
                 <td>{{this.description}}</td>

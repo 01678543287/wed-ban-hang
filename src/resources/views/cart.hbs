@@ -1,105 +1,110 @@
 {{!-- {{#if products}}
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
-            <ul class="list-group">
-                {{#each products}}
-                    <li class="list-group-item">
-                        <strong>{{this.item.name}}</strong>
-                        <span class="badge">{{this.qty}}</span>
-                        <span class="label label-success">{{this.price}}đ</span>
-                        <div class="btn-group">
-                            <button class="btn btn-primary btn-xs dropdown-toggle" type="button">Action <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Reduce by 1</a></li>
-                                <li><a href="#">Remove by All</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                {{/each}}
-                
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
-            <strong>Total: {{totalPrice}}</strong>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
-            <button type="button" class="btn btn-success">Thanh toán</button>
-        </div>
-    </div>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
+    <ul class="list-group">
+        {{#each products}}
+        <li class="list-group-item">
+            <strong>{{this.item.name}}</strong>
+            <span class="badge">{{this.qty}}</span>
+            <span class="label label-success">{{this.price}}đ</span>
+            <div class="btn-group">
+                <button class="btn btn-primary btn-xs dropdown-toggle" type="button">Action <span
+                        class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Reduce by 1</a></li>
+                    <li><a href="#">Remove by All</a></li>
+                </ul>
+            </div>
+        </li>
+        {{/each}}
+
+    </ul>
+</div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
+    <strong>Total: {{totalPrice}}</strong>
+</div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
+    <button type="button" class="btn btn-success">Thanh toán</button>
+</div>
+</div>
 {{else}}
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
-            <h2>Giỏ hàng trống.</h2>
-        </div>
-    </div>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3"></div>
+    <h2>Giỏ hàng trống.</h2>
+</div>
+</div>
 {{/if}}
- --}}
+--}}
 
 
 {{#if products}}
-    <div class="container-form" style="justify-content: unset;">
-        <div class="wrap mt-4 mb-4">
-          <div class="breadcrumb-news">
-              <p>
-                  Trang chủ >
-                  <span> Giỏ hàng của tôi </span>
-              </p>
-              <h4 class="title"><i class="fas fa-cart-arrow-down mr-2"></i>Danh mục sản phẩm đã chọn<hr></h4>
-          </div>
+<div class="container-form" style="justify-content: unset;">
+    <div class="wrap mt-4 mb-4">
+        <div class="breadcrumb-news">
+            <p>
+                Trang chủ >
+                <span> Giỏ hàng của tôi </span>
+            </p>
+            <h4 class="title"><i class="fas fa-cart-arrow-down mr-2"></i>Danh mục sản phẩm đã chọn
+                <hr>
+            </h4>
+        </div>
 
-            <div style="overflow-x:auto;">
+        <div style="overflow-x:auto;">
             <table id="table-cart" class="table mt-3">
-                  <thead>
-                       <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Tên sản phẩm</th>
-                            <th scope="col">Số lượng</th>
-                            <th scope="col">Giá</th>
-                            <th scope="col">Edit</th>
-                        </tr>
-                 </thead>
-                  <tbody>
-                     {{#each products}}
-                        <tr>
-                            <td scope="row">{{sum @index 1}}</td>
-                            <td>{{this.item.name}}</td>
-                            <td>
-                                <a href="" class="btn btn-Reduce font-weight-bold mr-4" data-toggle="modal" data-id="{{this._id}}" data-target="#btnReduce-Product-modal">-</a>
-                                {{this.qty}}
-                                <a href=""  class="btn btn-Add font-weight-bold ml-4" data-toggle="modal" data-id="{{this._id}}" data-target="#btnAdd-Product-modal">+</a>                                
-                            </td>
-                            <td>{{this.price}}</td>
-                            <td>
-                                <a href="" class="btn btn-Remove font-weight-bold " data-toggle="modal" data-id="{{this._id}}" data-target="#btnRemove-Product-modal">Xóa</a>
-                            </td>
-                        </tr>
-                     {{/each}}
-                 </tbody>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Giá</th>
+                        <th scope="col">Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each products}}
+                    <tr>
+                        <td scope="row">{{sum @index 1}}</td>
+                        <td>{{this.item.name}}</td>
+                        <td>
+                            <a href="" class="btn btn-Reduce font-weight-bold mr-4" data-toggle="modal"
+                                data-id="{{this._id}}" data-target="#btnReduce-Product-modal">-</a>
+                            {{this.qty}}
+                            <a href="" class="btn btn-Add font-weight-bold ml-4" data-toggle="modal"
+                                data-id="{{this._id}}" data-target="#btnAdd-Product-modal">+</a>
+                        </td>
+                        <td>{{this.price}}</td>
+                        <td>
+                            <a href="" class="btn btn-Remove font-weight-bold " data-toggle="modal"
+                                data-id="{{this._id}}" data-target="#btnRemove-Product-modal">Xóa</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
             </table>
-                
+
+        </div>
+
+        <div class="row pl-4" style="justify-content: flex-end;">
+
+            <p style="margin: unset;">
+                <strong style="height: 100%; vertical-align: baseline;line-height: 43px;">Tổng tiền: <span
+                        style="color:#17a2b8;">{{session.cart.totalPrice}}đ</span></strong>
+            </p>
+
+            <div class="ml-4" style="float: right;">
+                <a href="/checkout" type="button" class="btn button-w">Thanh toán</a>
             </div>
-
-            <div class="row pl-4" style="justify-content: flex-end;">   
-
-                <p style="margin: unset;">
-                    <strong style="height: 100%; vertical-align: baseline;line-height: 43px;">Tổng tiền: <span style="color:#17a2b8;">{{session.cart.totalPrice}}đ</span></strong>
-                </p>
-
-                <div class="ml-4" style="float: right;">
-                    <a href="/checkout" type="button" class="btn button-w" >Thanh toán</a>
-                </div>                
-            </div>
-   
-
-          
         </div>
 
     </div>
+
+</div>
 
 {{else}}
 
@@ -110,9 +115,10 @@
                 Trang chủ >
                 <span>Giỏ hàng của tôi </span>
             </p>
-            <h4 class="title"><i class="fas fa-cart-arrow-down mr-2"></i>Giỏ hàng trống<hr></h4>
-        </div
+            <h4 class="title"><i class="fas fa-cart-arrow-down mr-2"></i>Giỏ hàng trống
+                <hr>
+            </h4>
+        </div </div>
     </div>
 </div>
 {{/if}}
-
