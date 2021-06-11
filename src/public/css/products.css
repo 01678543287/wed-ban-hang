@@ -91,6 +91,5 @@ span > a {
 .location {
   position: relative;
   height: 100%;
-  background-color: aliceblue;
   display: flex;
   flex-wrap: wrap; }

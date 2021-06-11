@@ -43,7 +43,7 @@
 
 {{#if products}}
     <div class="container-form" style="justify-content: unset;">
-        <div class="wrap">
+        <div class="wrap mt-4 mb-4">
           <div class="breadcrumb-news">
               <p>
                   Trang chủ >
@@ -53,26 +53,29 @@
           </div>
 
             <div style="overflow-x:auto;">
-            <table class="table mt-3">
+            <table id="table-cart" class="table mt-3">
                   <thead>
                        <tr>
                             <th scope="col">#</th>
                             <th scope="col">Tên sản phẩm</th>
                             <th scope="col">Số lượng</th>
-                            <th scope="col" colspan="2">Giá</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Edit</th>
                         </tr>
                  </thead>
                   <tbody>
                      {{#each products}}
                         <tr>
-                            <th scope="row">{{sum @index 1}}</th>
+                            <td scope="row">{{sum @index 1}}</td>
                             <td>{{this.item.name}}</td>
-                            <td>{{this.qty}}</td>
+                            <td>
+                                <a href="" class="btn btn-Reduce font-weight-bold mr-4" data-toggle="modal" data-id="{{this._id}}" data-target="#btnReduce-Product-modal">-</a>
+                                {{this.qty}}
+                                <a href=""  class="btn btn-Add font-weight-bold ml-4" data-toggle="modal" data-id="{{this._id}}" data-target="#btnAdd-Product-modal">+</a>                                
+                            </td>
                             <td>{{this.price}}</td>
                             <td>
-                                <a href="" class="btn btn-Reduce" data-toggle="modal" data-id="{{this._id}}" data-target="#btnReduce-Product-modal">-</a>
-                                <a href="" class="btn btn-Add" data-toggle="modal" data-id="{{this._id}}" data-target="#btnAdd-Product-modal">+</a>
-                                <a href="" class="btn btn-Remove" data-toggle="modal" data-id="{{this._id}}" data-target="#btnRemove-Product-modal">Xóa</a>
+                                <a href="" class="btn btn-Remove font-weight-bold " data-toggle="modal" data-id="{{this._id}}" data-target="#btnRemove-Product-modal">Xóa</a>
                             </td>
                         </tr>
                      {{/each}}
@@ -81,11 +84,13 @@
                 
             </div>
 
-            <div class="row">
-                <div class="ml-4" style="display: inline-block;"></div>
-                    <strong>Tổng tiền: {{session.cart.totalPrice}}đ</strong>
-                </div>
-                <div class="ml-4 mt-2">
+            <div class="row pl-4" style="justify-content: flex-end;">   
+
+                <p style="margin: unset;">
+                    <strong style="height: 100%; vertical-align: baseline;line-height: 43px;">Tổng tiền: <span style="color:#17a2b8;">{{session.cart.totalPrice}}đ</span></strong>
+                </p>
+
+                <div class="ml-4" style="float: right;">
                     <a href="/checkout" type="button" class="btn button-w" >Thanh toán</a>
                 </div>                
             </div>
@@ -106,7 +111,7 @@
                 <span>Giỏ hàng của tôi </span>
             </p>
             <h4 class="title"><i class="fas fa-cart-arrow-down mr-2"></i>Giỏ hàng trống<hr></h4>
-        </div>
+        </div
     </div>
 </div>
 {{/if}}
