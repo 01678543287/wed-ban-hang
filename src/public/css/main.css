@@ -15,12 +15,12 @@
   background-color: #333;
   color: #fff;
   padding-top: 8px;
-  padding-left: 8px;
+  padding-bottom: 8px;
+  border: unset;
+  font-size: 18px;
   font-weight: 600;
-  position: absolute;
-  top: 102%;
-  right: 10px;
-  min-width: 120px; }
+  min-width: 100px;
+  border-radius: 3px; }
 
 .button-w:hover {
   background-color: #17a2b8; }
@@ -225,7 +225,6 @@
   background-color: var(--white-color);
   left: 90px;
   top: 100%;
-  width: 140px;
   padding: unset; }
 
 .nav-list-key__item:hover .header-subnav-user {
@@ -240,6 +239,7 @@
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 12px;
+  padding-right: 10px;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500; }

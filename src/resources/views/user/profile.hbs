@@ -1,5 +1,24 @@
-<h1>Thông tin khách hàng</h1>
-<h4>Tài khoản: {{User.username}}</h4>
-<h4>Tên: {{User.name}}</h4>
-<h4>Số Điện Thoại: {{User.phonenumber}}</h4>
-<h4>Email: {{User.email}}</h4>
+ <!-- START: CONTAINER -->
+<div class="container-form">
+	<div class="wrap pl-4 pr-4 mt-4 mb-4">
+		<div class="breadcrumb-news">
+			<p>
+				Trang chủ >
+				<span>Thông tin cá nhân </span>
+			</p>
+			<h4 class="title">Thông tin cá nhân<hr></h4>
+		</div>
+
+		<div class="content-wrap">
+			<h1 style="margin-top: unset; margin-bottom: 15px;"><i class="fas fa-user-tie mr-2"></i>Thông tin khách hàng</h1>
+			<div class="infor-customer ml-2">
+				<p class="font-weight-bolder" style="font-size: 18px;margin: 10px 0;">Tài khoản: <span style="font-weight: 600;">{{User.username}}</span></p>
+				<p class="font-weight-bolder" style="font-size: 18px;margin: 10px 0;">Tên: <span style="font-weight: 600;">{{User.name}}</span></p>
+				<p class="font-weight-bolder" style="font-size: 18px;margin: 10px 0;">Số Điện Thoại: <span style="font-weight: 600;">{{User.phonenumber}}</span></p>
+				<p class="font-weight-bolder" style="font-size: 18px;margin: 10px 0;">Email: <span style="font-weight: 600;">{{User.email}}</span></p>
+				<p><a href="/user/change-password" style="text-decoration: none;color:#3c2fff">Thay đổi mật khẩu</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END: CONTAINER -->

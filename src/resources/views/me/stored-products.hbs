@@ -1,6 +1,6 @@
-<div class="mt-4">
+<div class="mt-4" style="position: relative;">
     <div>
-      <h3>Khóa học của tôi</h3>
+      <h3>Danh mục sản phẩm</h3>
       <a href="/me/trash/products">Thùng rác ({{deletedCount}})</a>
     </div>
 
@@ -30,13 +30,14 @@
             {{else}}
             <tr>
               <td colspan="5" class="text-center">
-                Bạn chưa đăng khóa học nào.
+                Bạn chưa thêm sản phẩm nào.
                 <a href="/products/create">Thêm sản phẩm</a>
               </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
+        <a href="/me"><button type="submit" class="button-w button-form">Back</button></a>
 </div>
 
 {{!-- Confirm delete course --}}
@@ -44,7 +45,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Bạn chắc chắn muốn xóa khóa học?</h5>
+        <h5 class="modal-title">Bạn chắc chắn muốn xóa sản phẩm này?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

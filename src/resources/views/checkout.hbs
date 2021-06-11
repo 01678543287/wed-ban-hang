@@ -1,42 +1,51 @@
-
-  
-<div class="row">
-    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
-        <h1>Thanh Toán</h1>
-        <h4>Tổng Tiền: {{total}}</h4>
-        {{!-- <div id="charge-error" class="alert alert-danger {{#if noError}}hidden{{/if}}">
-            {{errMsg}}
-        </div> --}}
-        <form action="/checkout/final" method="POST">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label for="name">Họ Tên</label>
-                        <input type="text" id="nameKH" value="{{name}}" class="form-control" required name="nameKH">
-                    </div>
-                </div>
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label for="address">Địa chỉ</label>
-                        <input type="text" id="address" value="{{User.address}}" class="form-control" required name="address">
-                    </div>
-                </div>
+<div class="container-form">
+    <div class="wrap mt-4 mb-4">
+        <div class="breadcrumb-news">
+            <p>
+                Trang chủ >
+                <span> Thanh toán </span>
+            </p>
+            <h4 class="title"><i class="fas fa-cart-arrow-down mr-2"></i>Thanh toán
                 <hr>
-                <div class="col-xs-12">
+            </h4>
+        </div>
+        <div style="padding: 0 20%;">
+            <h1>Vui lòng điền thông tin</h1>
+            {{!-- <h4>Tổng Tiền: {{total}}</h4> --}}
+            {{!-- <div id="charge-error" class="alert alert-danger {{#if noError}}hidden{{/if}}">
+                {{errMsg}}
+            </div> --}}
+            <form action="/checkout/final" method="POST" >
+                <div class="row" style="flex-direction: column;">
+                   
                     <div class="form-group">
-                        <label for="card-name">Số Điện Thoại</label>
-                        <input type="text" id="phone" value="{{User.phonenumber}}" class="form-control" required name="phone">
+                        <label class="ml-2" for="name">Họ Tên *</label>
+                        <input type="text" id="nameKH" class="form-control" required name="nameKH">
+                    </div>
+                   
+                    <div class="form-group">
+                        <label class="ml-2" for="address">Địa chỉ *</label>
+                        <input type="text" id="address" class="form-control" required name="address">
+                    </div>
+             
+                    <div class="form-group">
+                        <label class="ml-2" for="card-name">Số Điện Thoại *</label>
+                        <input type="text" id="phone" class="form-control" required name="phone">
+                    </div>
+                   
+                    <div class="form-group">
+                        <label class="ml-2" for="card-number">Email *</label>
+                        <input type="text" id="email" class="form-control" required name="email">
+                    </div>
+                    
+                    <div class="form-group mt-2 ml-2" >
+                        
+                        <h4>Tổng Tiền: <span style="color:#17a2b8;">{{total}}đ</span> </h4>
+                       <button type="submit" class="button-w mt-1">Hoàn tất đơn hàng </button>
                     </div>
                 </div>
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label for="card-number">Email</label>
-                        <input type="text" id="email" value="{{User.email}}" class="form-control" required name="email">
-                    </div>
-                </div>
-                
-            </div>
-            <button type="submit" class="btn btn-primary">Hoàn tất đơn hàng</button>
-        </form>
+            </form>
+        </div>
     </div>
+
 </div>

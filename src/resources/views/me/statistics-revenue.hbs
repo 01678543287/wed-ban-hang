@@ -1,4 +1,4 @@
-<div class="mt-4">
+<div class="mt-4" style="position: relative;">
 
     <h3>Bảng thống kê doanh thu theo tháng {{sum month 1}}</h3>
 
@@ -18,6 +18,11 @@
                 <td>{{this.user}}</td>
                 <td>{{this.updatedAt}}</td>
                 <td>{{this.cart.totalPrice}}</td>
+                {{#each this.cart.items}}
+                    {{this.item.name}}
+                    {{this.qty}}
+                    {{this.item.price}}
+                {{/each}}
             </tr>
             {{else}}
             <tr>
@@ -29,6 +34,7 @@
         </tbody>
     </table>
     {{revenue}}
+        <a href="/me"><button type="submit" class="button-w button-form">Back</button></a>
 </div>
 
 

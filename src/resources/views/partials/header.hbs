@@ -81,9 +81,16 @@
                     </form>
                 </li>
                 <li class="nav-list-key__item">
-                    <a href="/user/sign-in" class="header__nav-user">
-                        <i class="fas fa-user header__nav--icon"></i>
-                    </a>
+                    {{#if login}}
+                         <a href="/user/profile" class="header__nav-user">
+                              <i class="fas fa-user header__nav--icon"></i>
+                         </a>                   
+                    {{else}}
+                         <a href="/user/sign-in" class="header__nav-user">
+                              <i class="fas fa-user header__nav--icon"></i>
+                         </a>
+                    {{/if}}
+
 
                     <ul class="header-subnav-user">
                         {{# if login}}
@@ -103,23 +110,18 @@
                             </li>
 
                         {{/if}}
-
-
-                         <li class="subnav-user-item">
-                            <a href="/products/create" class>Thêm sản phẩm</a>
-                        </li>
-                         <li class="subnav-user-item">
-                            <a href="/me/stored/products" class>Sản phẩm của tôi</a>
-                        </li>
                     </ul>
-
                 </li>
-                <li class="nav-list-key__item">
-                    <a href="/cart" class="header__nav-shopping">
+                <li class="nav-list-key__item" style="display: flex;">
+                    <a href="/cart" class="header__nav-shopping" style="display: flex; flex-direction: row  ;">
                         <i class="fas fa-shopping-cart
-                            header__nav--icon"></i>
-                        GIỎ HÀNG
-                        <span class="badge">{{session.cart.totalQty}}</span>
+                            header__nav--icon" style="line-height: 50px;"></i>
+                        <div>
+                            <p class="ml-2" style="margin-bottom: unset;">                                 
+                                Giỏ Hàng:<span class="badge">{{session.cart.totalQty}}SP</span> 
+                            </p>
+
+                       </div>
                     </a>
                 </li>
             </ul>
