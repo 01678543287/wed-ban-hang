@@ -13,6 +13,8 @@ const Product = new Schema({
   image: {type: String},
   price: {type: Number},
   slug: { type: String, slug: 'name', unique: true },
+  category: {type: mongoose.SchemaTypes, ref: 'Category' },
+
   },
   {
     timestamps: true
