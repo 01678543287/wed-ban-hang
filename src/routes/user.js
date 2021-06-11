@@ -20,6 +20,10 @@ router.post('/sign-up', [
     check('username','Tên đăng nhập phải có ít nhất 5 ký tự').isLength({min:5}),
     check('password', 'Mật khẩu phải có ít nhất 6 ký tự').isLength({min:6}),
     check('email', 'Địa chỉ email không hợp lệ').isEmail(),
+    check('username','Tên đăng nhập không được chứa ký tự đặc biệt như:\' \', \'#\'').isBase64(),
+    // check('password', 'Mật khẩu hiện không đủ mạnh').isStrongPassword(),
+    check('username','Tên đăng nhập chưa được điền').isEmpty(),
+    check('name', 'Họ và tên chưa được điền').isEmpty(),
 ], function(req, res, next){
     var messages = req.flash('error');
     const result= validationResult(req);
@@ -36,10 +40,10 @@ router.post('/sign-up', [
     }else{
         next();
     }
-},
-  passport.authenticate('local.signup', { successRedirect: '/',
-                                  failureRedirect: '/user/sign-up',
-                                  failureFlash: true }));
+},passport.authenticate('local.signup', { 
+    successRedirect: '/',
+    failureRedirect: '/user/sign-up',
+    failureFlash: true }));
 
 router.get('/sign-in', notLoggedIn, UserController.signIn);
 router.post('/sign-in',
