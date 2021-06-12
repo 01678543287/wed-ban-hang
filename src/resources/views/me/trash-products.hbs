@@ -4,7 +4,7 @@
     <a href="/me/stored/products">Danh sách khóa học</a>
   </div>
     
-    <table class="table mt-4">
+    <table id="table-w" class="table mt-4">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -17,7 +17,7 @@
         <tbody>
             {{#each products}}
             <tr>
-                <th scope="row">{{sum @index  1}}</th>
+                <td scope="row">{{sum @index  1}}</td>
                 <td>{{this.name}}</td>
                 <td>{{this.price}}</td>
                 <td>{{this.description}}</td>

@@ -43,8 +43,9 @@
         <div class="form-custom">
             <form action="/user/sign-up" method="POST" class="form-register">
                 <h3>VUI LÒNG ĐIỀN THÔNG TIN</h3>
-                {{messages}}
-
+                <strong style="color: red; font-size: 16px; font-weight: 600;">
+                    {{messages}}
+                </strong>
                 <div class="form-group">
                     <label for="">Tên đăng nhập *</label>
                     <input type="text" class="form-control" name="username" id="username" required placeholder="Nhập tên đăng nhập">
