@@ -4,7 +4,7 @@
       <a href="/me/blacklist/user">Danh sách đen ({{deletedCount}})</a>
     </div>
 
-    <table class="table mt-4">
+    <table id="table-w" class="table mt-4">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -18,7 +18,7 @@
         <tbody>
             {{#each user}}
             <tr>
-                <th scope="row">{{sum @index 1}}</th>
+                <td scope="row">{{sum @index 1}}</td>
                 <td>{{this.username}}</td>
                 <td>{{this.name}}</td>
                 <td>{{this.phonenumber}}</td>

@@ -147,26 +147,23 @@
 	color: red;
 }
 
-#table-products,
-#table-cart {
+#table-w {
     text-align: center;
     font-size: larger inherit;
     font-weight: 600;
     // line-height: 56px;
 }
 
-// #table-cart tr:nth-child(even){
+// #table-w tr:nth-child(even){
 //     background-color: #ddd;
 // }
 
-#table-products tr:hover,
-#table-cart tr:hover{
+#table-w tr:hover{
    background-color: #f2f2f2;
    cursor: pointer;
 }
 
-#table-products th,
-#table-cart th{
+#table-w th{
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
@@ -174,8 +171,7 @@
   color: white;
 }
 
-#table-products th,#table-products td,
-#table-cart th,#table-cart td {
+#table-w th,#table-w td {
     border: 2px solid #dee2e6;
     padding: 4px;
     vertical-align: baseline;
