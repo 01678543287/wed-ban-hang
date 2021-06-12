@@ -11,9 +11,10 @@ const Product = new Schema({
   name: {type: String},
   description: {type: String},
   image: {type: String},
+  imageshow1: {type: String},
+  imageshow2: {type: String},
   price: {type: Number},
   slug: { type: String, slug: 'name', unique: true },
-  category: {type: mongoose.SchemaTypes, ref: 'Category' },
   },
   {
     timestamps: true

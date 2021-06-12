@@ -9,6 +9,8 @@
         <div class="col-lg-9">
             <h2>{{product.name}}</h2>
             <img width="348" height="358" src="{{product.image}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            <img width="348" height="358" src="{{product.imageshow1}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            <img width="348" height="358" src="{{product.imageshow2}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
             
         </div>
     </div>
@@ -23,6 +25,8 @@
         var productId;
         var addCartForm = document.forms['add-cart-form'];
         var addCartBtn = $('.btn-add-cart');
+        var size = document.forms['size'];
+
 
         // Restore btn clicked
         addCartBtn.click(function(e){

@@ -16,6 +16,7 @@ module.exports = function Cart(oldCart) {
         this.nameProduct += storedItem.item.name + ", ";
         this.totalQty++;
         this.totalPrice += storedItem.item.price;
+
     }
 
     this.reduceByOne = function(id) {

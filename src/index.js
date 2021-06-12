@@ -5,7 +5,7 @@ const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser');
 const { dirname } = require('path');
 const app = express();
-const port = 3000;
+const port = 80;
 require('./config/passport');
 const session = require('express-session');
 const mongoose = require('mongoose');

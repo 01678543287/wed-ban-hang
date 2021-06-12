@@ -10,6 +10,7 @@ class CartController {
       var productId = req.params.id;
       var cart = new Cart(req.session.cart ? req.session.cart:{products: {}});
 
+
       Product.findById(productId, function(err, product) {
         if(err) {
           return res.redirect('back');

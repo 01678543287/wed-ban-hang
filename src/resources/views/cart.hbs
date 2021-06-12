@@ -59,6 +59,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Tên sản phẩm</th>
                             <th scope="col">Số lượng</th>
+                            <th scope="col">Size</th>
                             <th scope="col">Giá</th>
                             <th scope="col">Edit</th>
                         </tr>
@@ -74,6 +75,7 @@
                                 <a href="/cart/{{this.item._id}}/add" class="btn btn-Reduce font-weight-bold mr-4">+</a>
                                 
                             </td>
+                            <td>{{req.body.size}}</td>
                             <td>{{this.price}}</td>
                             <td>
                                 <a href="/cart/{{this.item._id}}/remove" class="btn btn-Remove font-weight-bold " >Xóa</a>
