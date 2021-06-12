@@ -1,4 +1,4 @@
-<div class="mt-4" style="position: relative;">
+<div class="mt-4 mb-5" style="position: relative;">
     <div>
       <h3>Danh mục sản phẩm</h3>
       <a href="/me/trash/products">Thùng rác ({{deletedCount}})</a>
@@ -20,11 +20,11 @@
             <tr>
                 <td scope="row">{{sum @index 1}}</td>
                 <td>{{this.name}}</td>
-                <td>{{this.price}}</td>
+                <td>{{this.price}}đ</td>
                 <td>{{this.description}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
-                    <a href="/products/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                    <a href="/products/{{this._id}}/edit" class="btn btn-link" style="text-decoration: none; color: black;">Sửa</a>
                     <a href="" class="btn btn-Xoa" data-toggle="modal" data-id="{{this._id}}" data-target="#btnXoa-Product-modal">Xóa</a>
                 </td>
             </tr>

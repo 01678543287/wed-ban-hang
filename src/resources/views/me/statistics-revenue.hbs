@@ -1,14 +1,15 @@
-<div class="mt-4" style="position: relative;">
+<div class="mt-4 mb-4" style="position: relative;">
 
     <h3>Bảng thống kê doanh thu theo tháng {{sum month 1}}</h3>
 
     <table id="table-w" class="table mt-4">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Tên khách hàng</th>
-                <th scope="col">Thời gian mua</th>
-                <th scope="col">Thành tiền</th>
+                <th style="min-width: 50px;">#</th>
+                <th >Tên khách hàng</th>
+                <th >Thời gian mua</th>
+                <th >Sản phẩm mua</th>
+                <th >Thành tiền</th>
             </tr>
         </thead>
         <tbody>
@@ -17,24 +18,36 @@
                 <td scope="row">{{sum @index 1}}</td>
                 <td>{{this.user}}</td>
                 <td>{{this.updatedAt}}</td>
-                <td>{{this.cart.totalPrice}}</td>
+                <td>
                 {{#each this.cart.items}}
-                    {{this.item.name}}
-                    {{this.qty}}
-                    {{this.item.price}}
+                {{this.qty}} 
+                {{this.item.name}}
+                {{this.item.price}}
+                <br>
                 {{/each}}
+
+                </td>
+                <td>{{this.cart.totalPrice}}đ</td>
+
             </tr>
             {{else}}
             <tr>
-              <td colspan="5" class="text-center">
-                Bạn chưa có đơn hàng nào trong tháng này
-              </td>
+                <td colspan="5" class="text-center">
+                    Bạn chưa có đơn hàng nào trong tháng này
+                </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
-    {{revenue}}
-        <a href="/me"><button type="submit" class="button-w button-form">Back</button></a>
+        <strong style="height: 100%; vertical-align: baseline;line-height: 43px;">Tổng doanh thu: <span
+                style="color:#17a2b8;"> {{revenue}}đ</span></strong>
+   
+    <a href="/me"><button type="submit" class="button-w button-form">Back</button></a>
 </div>
 
 
+<script>
+    function functionCheck(x) {
+        console.log("a");
+    }
+</script>

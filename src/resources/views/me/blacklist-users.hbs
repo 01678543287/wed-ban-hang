@@ -1,4 +1,4 @@
-<div class="mt-4">
+<div class="mt-4 mb-5" style="position: relative;">
   <div>
     <h3>Tài khoản blacklist</h3>
     <a href="/me/stored/user">Danh sách tài khoản</a>
@@ -12,7 +12,7 @@
                 <th scope="col">Họ và tên</th>
                 <th scope="col">Số điện thoại</th>
                 <th scope="col">Địa chỉ email</th>
-                <th scope="col" colspan="2">Thời gian tạo tài khoản</th>
+                <th scope="col">Thời gian tạo tài khoản</th>
             </tr>
         </thead>
         <tbody>
@@ -20,18 +20,18 @@
             <tr>
                 <td scope="row">{{sum @index 1}}</td>
                 <td>{{this.username}}</td>
-                <td>{{this.name}}</td>
+                <td>{{this.name}}</td> 
                 <td>{{this.phonenumber}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
-                    <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Khôi Phục</a>
+                    <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}" style="text-decoration: none; color: black;">Khôi Phục</a>
                     <a href="" class="btn btn-Xoa" data-id="{{this._id}}" data-toggle="modal" data-target="#btnXoa-User-modal">Xóa vĩnh viễn</a>
 
                 </td>
             </tr>
             {{else}}
             <tr>
-              <td colspan="5" class="text-center">
+              <td colspan="6" class="text-center">
                 Danh sách trống.
                 <a href="/me/stored/user">Danh sách tài khoản</a>
               </td>
@@ -39,6 +39,7 @@
             {{/each}}
         </tbody>
     </table>
+            <a href="/me"><button type="submit" class="button-w button-form">Back</button></a>
 </div>
 
 {{!-- Confirm delete product --}}

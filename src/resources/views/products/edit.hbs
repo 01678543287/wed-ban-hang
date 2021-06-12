@@ -1,4 +1,4 @@
-<div class="mt-4">
+<div class="mt-4" style="padding: 10px 20%;position: relative;">
     <h3>Cập nhật sản phẩm</h3>
 
     <form class="mt-4" method="POST" action="/products/{{product._id}}?_method=PUT">
@@ -19,6 +19,7 @@
             <input type="text" class="form-control" value="{{product.price}}" id="price" name="price" required>
         </div>
         
-        <button type="submit" class="btn btn-primary">Lưu lại</button>
+        <button type="submit" class="button-w mt-4 mb-4">Lưu lại</button>
     </form>
+            <a href="/me/stored/products"><button type="submit" class="button-w button-form">Back</button></a>
 </div>

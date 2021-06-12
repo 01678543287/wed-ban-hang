@@ -1,4 +1,4 @@
-<div class="mt-4">
+<div class="mt-4 mb-4" style="position: relative;">
   <div>
     <h3>Khóa học đã xóa</h3>
     <a href="/me/stored/products">Danh sách khóa học</a>
@@ -11,7 +11,8 @@
                 <th scope="col">Tên sản phẩm</th>
                 <th scope="col">Giá</th>
                 <th scope="col">Mô tả</th>
-                <th scope="col" colspan="2">Thời gian xóa</th>
+                {{!-- <th scope="col">Thời gian xóa</th> --}}
+                <th scope="col">Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -21,9 +22,9 @@
                 <td>{{this.name}}</td>
                 <td>{{this.price}}</td>
                 <td>{{this.description}}</td>
-                <td>{{this.deletedAt}}</td>
+                {{!-- <td>{{this.deletedAt}}</td> --}}
                 <td>
-                    <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Khôi Phục</a>
+                    <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}" style="color: black;text-decoration: none;">Khôi Phục</a>
                     <a href="" class="btn btn-Xoa" data-id="{{this._id}}" data-toggle="modal" data-target="#btnXoa-Product-modal">Xóa vĩnh viễn</a>
 
                 </td>
@@ -32,12 +33,13 @@
             <tr>
               <td colspan="5" class="text-center">
                 Thùng rác trống.
-                <a href="/me/stored/products">Danh sách khóa học</a>
+                <a href="/me/stored/products">Danh sách sản phẩm</a>
               </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
+            <a href="/me/stored/products"><button type="submit" class="button-w button-form">Back</button></a>
 </div>
 
 {{!-- Confirm delete product --}}
