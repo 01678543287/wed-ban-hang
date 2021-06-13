@@ -43,15 +43,18 @@ ul {
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
-  border: solid black; }
+  height: 42px;
+  width: 42px;
+  border: ridge;
+  text-align: center;
+  font-weight: 600; }
 
 .box:hover input ~ .checkmark {
-  background-color: #ccc; }
+  border: solid 2px black; }
 
 .box input:checked ~ .checkmark {
-  background-color: #2196F3; }
+  background-color: #2196F3;
+  border: solid 2px black; }
 
 .checkmark:after {
   content: "";

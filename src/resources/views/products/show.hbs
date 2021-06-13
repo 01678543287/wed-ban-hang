@@ -1,16 +1,39 @@
 <div class="mt-4">
     <div class="row">
-        <div class="col-lg-3" >
-            <button class="btn btn-add-cart" style="border: none; background: #000000; color: #FFFFFF;height: 40px;width: 200px;" data-id="{{product._id}}">Thêm vào giỏ hàng</button>
-            <p>{{product.description}}</p>
-            <p>Giá: {{product.price}}</p>
+        <div class="col-lg-2">
+            <img src="{{product.image}}" frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.image}}'" />
+            <img src="{{product.imageshow1}}" frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.imageshow1}}'"/>
+            <img src="{{product.imageshow2}}" frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.imageshow2}}'"/>
         </div>
-
-        <div class="col-lg-9">
-            <h2>{{product.name}}</h2>
-            <img width="348" height="358" src="{{product.image}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-            <img width="348" height="358" src="{{product.imageshow1}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-            <img width="348" height="358" src="{{product.imageshow2}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        <div class="col-lg-7" >
+                <img src="{{product.image}}" alt="" id="large-image"  style="width: 100%; height: auto;border: ridge 2px black; margin: 20px; " />
+        </div>
+        <div class="col-lg-3" >
+            <h1 style="font-size: 50px ; color: black; padding-bottom: 15x;border-bottom: ridge 2px; font-weight: 800;">{{product.name}}</h1>
+            <h2 style="margin-bottom: 10px;">Giá: {{product.price}}đ</h2>
+            <p>{{product.description}}</p>
+            <h2>Size: </h2>
+                            <label class="box">&nbsp;
+                                <input type="radio" name="size" >
+                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);" >S</span>
+                              </label>
+                              <label class="box">
+                                <input type="radio" name="size">&nbsp;
+                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);">M</span>
+                              </label>
+                              <label class="box">
+                                <input type="radio" name="size">&nbsp;
+                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);" >L</span>
+                              </label>
+                              <label class="box">
+                                <input type="radio" name="size">&nbsp;
+                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);">XL</span>
+                              </label>
+                              <label class="box">
+                                <input type="radio" name="size">&nbsp;
+                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);">XXL</span>
+                              </label>
+            <button class="btn btn-add-cart" style="border: none;margin: 20px 0px; background: #000000; color: #FFFFFF;height: 40px;width: 200px;" data-id="{{product._id}}">Thêm vào giỏ hàng</button>
             
         </div>
     </div>
