@@ -19,11 +19,14 @@ router.post('/change-password', isLoggedIn,
 router.post('/sign-up', [
     check('username','Tên đăng nhập phải có ít nhất 5 ký tự').isLength({min:5}),
     check('password', 'Mật khẩu phải có ít nhất 6 ký tự').isLength({min:6}),
+    check('username','Tên đăng nhập không được quá 30 ký tự').isLength({max:30}),
     check('email', 'Địa chỉ email không hợp lệ').isEmail(),
-    check('username','Tên đăng nhập không được chứa ký tự đặc biệt như:\' \', \'#\'').isBase64(),
+    check('username')
+        .custom(value => !/\s/.test(value))
+        .withMessage('Tên đăng nhập không được chứa khoảng trắng'),
     // check('password', 'Mật khẩu hiện không đủ mạnh').isStrongPassword(),
-    check('username','Tên đăng nhập chưa được điền').isEmpty(),
-    check('name', 'Họ và tên chưa được điền').isEmpty(),
+    check('username','Tên đăng nhập chưa được điền').not().isEmpty({ignore_whitespace:true }),
+    check('name', 'Họ và tên chưa được điền').not().isEmpty({ignore_whitespace:true} ).trim(),
 ], function(req, res, next){
     var messages = req.flash('error');
     const result= validationResult(req);
@@ -71,7 +74,6 @@ function notLoggedIn(req, res, next){
 
 function isLoggedIn(req, res, next){
     if (req.isAuthenticated()){
-        // console.log(req.session.passport.user);
         return next();
     }
     res.redirect('/user/sign-in');
