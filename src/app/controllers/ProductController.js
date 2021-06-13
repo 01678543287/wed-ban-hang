@@ -1,4 +1,5 @@
 const Product = require('../models/Product');
+const Category = require('../models/Category');
 const { mongooseToObject } = require('../../util/mongoose');
 const { mutipleMongooseToObject } = require('../../util/mongoose');
 
@@ -16,7 +17,13 @@ class SiteController {
     }
     // [GET] /proucts/create
     create(req, res, next) {
-        res.render('products/create');
+        Category.find({})
+            .then((categorys) =>
+                res.render('products/create', {
+                categorys: mutipleMongooseToObject(categorys),
+                }),
+            )
+        //res.render('products/create');
     }
     // [POST] /products/store
     store(req, res, next) {

@@ -13,9 +13,9 @@
             <h2 style="margin-bottom: 10px;">Giá: {{product.price}}đ</h2>
             <p>{{product.description}}</p>
             <h2>Size: </h2>
-                            <label class="box">&nbsp;
+                            <label class="box" id="size">&nbsp;
                                 <input type="radio" name="size" >
-                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);" >S</span>
+                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);">S</span>
                               </label>
                               <label class="box">
                                 <input type="radio" name="size">&nbsp;
@@ -42,24 +42,26 @@
 <form name="add-cart-form" method="GET" ></form>
 
 
+<body>
+<input type="text"  id="te">
+</body>
+</html>
 
 <script>
     document.addEventListener('DOMContentLoaded', function(){
         var productId;
         var addCartForm = document.forms['add-cart-form'];
         var addCartBtn = $('.btn-add-cart');
-        var size = document.forms['size'];
-
 
         // Restore btn clicked
         addCartBtn.click(function(e){
           //e.preventDefault();
-
+          
           var productId = $(this).data('id');
-          addCartForm.action = '/cart/' + productId +'/add-cart';
+          addCartForm.action = '/cart/' + productId +'/add-cart/';
           addCartForm.submit();
         });
-
+        
     });
 
 </script>
