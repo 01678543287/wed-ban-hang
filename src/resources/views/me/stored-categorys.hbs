@@ -1,41 +1,36 @@
 <div class="mt-4 mb-5" style="position: relative;">
     <div>
-      <h3>Sản phẩm</h3>
-      <a href="/me/trash/products">Thùng rác ({{deletedCount}})</a>
+      <h3>Danh mục sản phẩm</h3>
+      <a href="/me/trash/categorys">Thùng rác ({{deletedCount}})</a>
     </div>
     <div>
-      <a href="/products/create">Thêm sản phẩm</a>
+      <a href="/categorys/create">Thêm danh mục sản phẩm</a>
     </div>
-
     <table id="table-w" class="table mt-4">
         <thead>
             <tr>
                 <th scope="col" style="min-width: 50px;">#</th>
-                <th scope="col">Tên sản phẩm</th>
-                <th scope="col">Giá</th>
-                <th scope="col">Mô tả</th>
-                <th scope="col" >Thời gian thêm</th>
+                <th scope="col">Tên danh mục</th>
+                <th scope="col">Thời gian thêm</th>
                 <th scope="col" >Edit</th>
             </tr>
         </thead>
         <tbody>
-            {{#each products}}
+            {{#each categorys}}
             <tr>
                 <td scope="row">{{sum @index 1}}</td>
                 <td>{{this.name}}</td>
-                <td>{{this.price}}đ</td>
-                <td>{{this.description}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
-                    <a href="/products/{{this._id}}/edit" class="btn btn-link" style="text-decoration: none; color: black;">Sửa</a>
+                    <a href="/categorys/{{this._id}}/edit" class="btn btn-link" style="text-decoration: none; color: black;">Sửa</a>
                     <a href="" class="btn btn-Xoa" data-toggle="modal" data-id="{{this._id}}" data-target="#btnXoa-Product-modal">Xóa</a>
                 </td>
             </tr>
             {{else}}
             <tr>
               <td colspan="5" class="text-center">
-                Bạn chưa thêm sản phẩm nào.
-                <a href="/products/create">Thêm sản phẩm</a>
+                Bạn chưa thêm danh mục sản phẩm nào.
+                <a href="/categorys/create">Thêm danh mục sản phẩm</a>
               </td>
             </tr>
             {{/each}}
@@ -49,7 +44,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Bạn chắc chắn muốn xóa sản phẩm này?</h5>
+        <h5 class="modal-title">Bạn chắc chắn muốn xóa danh mục sản phẩm này?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -71,9 +66,7 @@
         var productId;
         var deleteForm = document.forms['delete-product-form'];
         var btnDeleteProduct = document.getElementById('btn-delete-product');
-        //var checkboxAll = $('#checkbox-all-in');
-        //var productItemCheckBox = $('input[name="productsIds[]"]');
-        //var checkAllSubmitBtn = $('#btn-check-all-submit');
+
 
         // khi dialog confirm da clicked
         $('#btnXoa-Product-modal').on('show.bs.modal', function (event) {
@@ -83,7 +76,7 @@
 
         //khi nut xoa khoa hoc duoc clicked
         btnDeleteProduct.onclick = function() {
-            deleteForm.action = '/products/' + productId +'?_method=DELETE';
+            deleteForm.action = '/categorys/' + productId +'?_method=DELETE';
             deleteForm.submit();
         }
     });

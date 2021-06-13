@@ -1,0 +1,95 @@
+<div class="mt-4 mb-5" style="position: relative;">
+  <div>
+    <h3>Danh mục đã xóa</h3>
+    <a href="/me/stored/categorys">Danh mục sản phẩm</a>
+  </div>
+    
+    <table id="table-w" class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên danh mục</th>
+                {{!-- <th scope="col">Thời gian xóa</th> --}}
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each categorys}}
+            <tr>
+                <td scope="row">{{sum @index  1}}</td>
+                <td>{{this.name}}</td>
+                {{!-- <td>{{this.deletedAt}}</td> --}}
+                <td>
+                    <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}" style="color: black;text-decoration: none;">Khôi Phục</a>
+                    <a href="" class="btn btn-Xoa" data-id="{{this._id}}" data-toggle="modal" data-target="#btnXoa-Product-modal">Xóa vĩnh viễn</a>
+
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+              <td colspan="5" class="text-center">
+                Thùng rác trống.
+                <a href="/me/stored/categorys">Danh sách danh mục</a>
+              </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+            <a href="/me/stored/categorys"><button type="submit" class="button-w button-form">Back</button></a>
+</div>
+
+{{!-- Confirm delete product --}}
+<div class="modal" id="btnXoa-Product-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Bạn chắc chắn muốn xóa vĩnh viễn khóa học?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-product" type="button" class="btn btn-danger">Xóa vĩnh viễn</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form name="delete-product-form" method="POST" ></form>
+<form name="restore-product-form" method="POST" ></form>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function(){
+        var productId;
+        var deleteForm = document.forms['delete-product-form'];
+        var restoreForm = document.forms['restore-product-form'];
+        var btnDeleteProduct = document.getElementById('btn-delete-product');
+        var restoreBtn = $('.btn-restore');
+
+        // khi dialog confirm da clicked
+        $('#btnXoa-Product-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            productId = button.data('id');
+         });
+
+        //khi nut xoa khoa hoc duoc clicked
+        btnDeleteProduct.onclick = function() {
+            deleteForm.action = '/categorys/' + productId +'/force?_method=DELETE';
+            deleteForm.submit();
+        }
+        // Restore btn clicked
+        restoreBtn.click(function(e){
+          e.preventDefault();
+
+          var productId = $(this).data('id');
+          restoreForm.action = '/categorys/' + productId +'/restore?_method=PATCH';
+          restoreForm.submit();
+        });
+
+    });
+
+    
+</script>

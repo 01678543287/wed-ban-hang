@@ -1,12 +1,13 @@
 const Product = require('../models/Product');
 const Order = require('../models/Order');
 const User = require('../models/User');
+const Category = require('../models/Category');
 const {mutipleMongooseToObject} = require('../../util/mongoose');
 const {mutipleOrderToRevenue} = require('../../util/mongoose');
 
 
 class SiteController {
-    //[GET] /me/storedproducts
+    //[GET] /me/stored/products
     storedProducts(req, res, next) {
         Promise.all([Product.find({}), Product.countDocumentsDeleted()])
             .then(([products, deletedCount]) => 
@@ -70,6 +71,25 @@ class SiteController {
         User.findDeleted({})
             .then(user => res.render('me/blacklist-users', {
                 user: mutipleMongooseToObject(user)
+            }))
+            .catch(next);
+    }
+    //[GET] /me/stored/category
+    storedCategory(req, res, next) {
+        Promise.all([Category.find({}), Category.countDocumentsDeleted()])
+            .then(([categorys, deletedCount]) => 
+                res.render('me/stored-categorys', {
+                    deletedCount,
+                    categorys: mutipleMongooseToObject(categorys)
+                })
+            )
+            .catch(next);
+    }
+    //[GET] /me/trash/categorys
+    trashCategory(req, res, next) {
+        Category.findDeleted({})
+            .then(categorys => res.render('me/trash-categorys', {
+                categorys: mutipleMongooseToObject(categorys)
             }))
             .catch(next);
     }

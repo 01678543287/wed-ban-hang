@@ -1,0 +1,13 @@
+<div class="mt-4" style="padding: 10px 20%;position: relative;">
+    <h3>Cập nhật danh mục sản phẩm</h3>
+
+    <form class="mt-4" method="POST" action="/categorys/{{category._id}}?_method=PUT">
+        <div class="form-group">
+            <label for="name">Tên danh mục</label>
+            <input type="text" class="form-control" value="{{category.name}}" id="name" name="name" required>
+        </div>
+        
+        <button type="submit" class="button-w mt-4 mb-4">Lưu lại</button>
+    </form>
+            <a href="/me/stored/categorys"><button type="submit" class="button-w button-form">Back</button></a>
+</div>
