@@ -12,7 +12,28 @@
             <h1 style="font-size: 50px ; color: black; padding-bottom: 15x;border-bottom: ridge 2px; font-weight: 800;">{{product.name}}</h1>
             <h2 style="margin-bottom: 10px;">Giá: {{product.price}}đ</h2>
             <p>{{product.description}}</p>
-            <button class="btn btn-add-cart" style="border: none; background: #000000; color: #FFFFFF;height: 40px;width: 200px;" data-id="{{product._id}}">Thêm vào giỏ hàng</button>
+            <h2>Size: </h2>
+                            <label class="box">&nbsp;
+                                <input type="radio" name="size" >
+                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);" >S</span>
+                              </label>
+                              <label class="box">
+                                <input type="radio" name="size">&nbsp;
+                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);">M</span>
+                              </label>
+                              <label class="box">
+                                <input type="radio" name="size">&nbsp;
+                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);" >L</span>
+                              </label>
+                              <label class="box">
+                                <input type="radio" name="size">&nbsp;
+                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);">XL</span>
+                              </label>
+                              <label class="box">
+                                <input type="radio" name="size">&nbsp;
+                                <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);">XXL</span>
+                              </label>
+            <button class="btn btn-add-cart" style="border: none;margin: 20px 0px; background: #000000; color: #FFFFFF;height: 40px;width: 200px;" data-id="{{product._id}}">Thêm vào giỏ hàng</button>
             
         </div>
     </div>
