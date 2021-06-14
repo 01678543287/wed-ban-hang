@@ -10,7 +10,8 @@ router.delete('/:id', categoryController.delete);
 router.get('/:id/edit', categoryController.edit);
 router.put('/:id', categoryController.update);
 router.delete('/:id/force', categoryController.forceDelete);
-router.patch('/:id/restore', categoryController.restore);
+router.get('/:id/edit', categoryController.edit);
+router.get('/show', categoryController.show);
 
 
 
