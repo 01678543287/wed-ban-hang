@@ -31,13 +31,31 @@ class SiteController {
         const date = new Date();
         var year = date.getFullYear();
         var month = date.getMonth();
-        if(Object.keys(req.query).length !== 0){
-            year = req.query.year;
-            month = req.query.month - 1;
+        var day = date.getDay();
+        var distanceDay = 0;
+        var distanceMonth = 0;
+        var distanceYear = 0;
+        if(req.query.type == 'year'){
+            if(req.query.year != null) year = req.query.year;
+            month = 0;
+            day = 0;
+            distanceYear = 1;
+        }
+        else if(req.query.type == 'month' || Object.keys(req.query).length == 0){
+            if(req.query.year != null) year = req.query.year;
+            if(req.query.month != null) month = req.query.month - 1;
+            day = 0;
+            distanceMonth = 1;
+        }
+        else if(req.query.type == 'day'){
+            if(req.query.year != null) year = req.query.year;
+            if(req.query.month != null) month = req.query.month - 1;
+            if(req.query.day != null) day = req.query.day - 1; 
+            distanceDay = 1;
         }
         Order.find({updatedAt : {
-            "$gte": new Date(year, month , 0, ), 
-            "$lt": new Date(year, month + 1, 0)
+            "$gte": new Date(year, month , day, ), 
+            "$lt": new Date(year + distanceYear, month + distanceMonth, day + distanceDay)
             }
         })
             .then(orders => res.render('me/statistics-revenue', {
