@@ -8,6 +8,17 @@ const { mutipleMongooseToObject } = require('../../util/mongoose');
 class CategoryController {
 
 
+    // [GET] /categorys/:slug
+    list(req, res, next) {
+        Promise.all([Product.find({cateID: req.params.slug}), Product.countDocumentsDeleted()])
+            .then(([products, deletedCount]) => 
+                res.render('categorys/list', {
+                    deletedCount,
+                    products: mutipleMongooseToObject(products)
+                })
+            )
+            .catch(next);
+    }
     // [GET] /categorys/create
     create(req, res, next) {
         res.render('categorys/create');
