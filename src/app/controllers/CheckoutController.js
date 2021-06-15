@@ -36,6 +36,7 @@ class CheckoutController {
       phone: req.body.phone,
       email: req.body.email,
     });
+    //console.log(order)
     order
       .save()
       .then(() => res.redirect('/'), req.session.cart = null)

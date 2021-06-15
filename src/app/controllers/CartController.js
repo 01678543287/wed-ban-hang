@@ -5,7 +5,7 @@ const {mutipleMongooseToObject} = require('../../util/mongoose');
 
 
 class CartController {
-    //[GET] cart/id/add-to-cart
+    //[GET] cart/:id/add-to-cart
     addToCart(req, res, next) {
       var productId = req.params.id;
       var cart = new Cart(req.session.cart ? req.session.cart:{products: {}});

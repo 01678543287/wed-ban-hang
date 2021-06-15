@@ -14,7 +14,7 @@ const Product = new Schema({
   imageshow1: {type: String},
   imageshow2: {type: String},
   price: {type: Number},
-  cateID: {type: Schema.Types.ObjectId},
+  cateID: {type: Schema.Types.ObjectId, ref:'Category'},
   slug: { type: String, slug: 'name', unique: true },
   },
   {

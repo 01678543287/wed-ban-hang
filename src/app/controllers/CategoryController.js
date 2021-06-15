@@ -76,23 +76,29 @@ class CategoryController {
                     as: 'category'
                 }
             }
-            ], 
-            )
-            .then((product) =>
-                //console.log(product),
-                {
-                    for(var id in product[id])
-                    {
-                        products.push(product[id]);
-                        return products;
-                    }
-                },
-                console.log(products),
-                res.render('categorys/show', {
-                    products: mutipleMongooseToObject(products),
-                }),
-            )
-            .catch(next);
+            ],) 
+            .exec(function(err, products){
+                console.log(products[2].category[0]._id)
+                if (err) throw err;
+                res.render('categorys/show', {products: products});
+            });
+            
+            // .then((products) =>
+            //     //console.log(product),
+            //     // {
+            //     //     for(var id in product[id])
+            //     //     {
+            //     //         products.push(product[id]);
+            //     //         return products;
+            //     //     }
+            //     // },
+            //     // console.log(products),
+            //     res.render('categorys/show', {
+                    
+            //         products: mutipleMongooseToObject(products),
+            //     }),
+            // )
+            // .catch(next);
             
             
             // function(err,products) {
