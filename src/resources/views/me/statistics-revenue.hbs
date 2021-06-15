@@ -1,15 +1,28 @@
 <div class="mt-4 mb-4" style="position: relative;">
 
-    <h3>Bảng thống kê doanh thu theo tháng {{sum month 1}}</h3>
+    <h1 style="color: #17a2b8;">Bảng thống kê doanh thu theo <span>{{output}}</span></h1>
+    <div class="form" style="font-size: 16px;font-weight: 500;">
+        <label for="date">Chọn ngày cần tìm để thống kê </label>
+        <input type="date" id="date" onchange="myDate()" value=""  style="border: 1px solid #333333;">
+        <br>
+        <label for="statistical">Phương thức</label >
+        <select name="select-Statistical" onchange="myOption()" id="typeStatistical" style="border: 1px solid #333333;">
+            <option value="day">Thống kê theo Ngày/Tháng/Năm</option>
+            <option value="month">Thống kê theo Tháng/Năm</option>
+            <option value="year">Thống kê theo Năm</option>
+        </select>
+        <br>
+        <a href="" id="btn-statistical"><button type="submit"  onclick="functionStatistical()" class="button-w">Thống kê</button></a>
+    </div>
 
     <table id="table-w" class="table mt-4">
         <thead>
             <tr>
                 <th style="min-width: 50px;">#</th>
-                <th >Tên khách hàng</th>
-                <th >Thời gian mua</th>
-                <th >Sản phẩm mua</th>
-                <th >Thành tiền</th>
+                <th>Tên khách hàng</th>
+                <th>Thời gian mua</th>
+                <th>Sản phẩm mua</th>
+                <th>Thành tiền</th>
             </tr>
         </thead>
         <tbody>
@@ -19,12 +32,12 @@
                 <td>{{this.user}}</td>
                 <td>{{this.updatedAt}}</td>
                 <td>
-                {{#each this.cart.items}}
-                {{this.qty}} 
-                {{this.item.name}}
-                {{this.item.price}}
-                <br>
-                {{/each}}
+                    {{#each this.cart.items}}
+                    {{this.qty}}
+                    {{this.item.name}}
+                    {{this.item.price}}
+                    <br>
+                    {{/each}}
 
                 </td>
                 <td>{{this.cart.totalPrice}}đ</td>
@@ -33,21 +46,66 @@
             {{else}}
             <tr>
                 <td colspan="5" class="text-center">
-                    Bạn chưa có đơn hàng nào trong tháng này
+                   Không có đơn hàng nào trong khoảng thời gian này!
                 </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
-        <strong style="height: 100%; vertical-align: baseline;line-height: 43px;">Tổng doanh thu: <span
-                style="color:#17a2b8;"> {{revenue}}đ</span></strong>
-   
+    <strong style="height: 100%; vertical-align: baseline;line-height: 43px;">Tổng
+        doanh thu: <span
+            style="color:#17a2b8;"> {{revenue}}đ</span></strong>
+
     <a href="/me"><button type="submit" class="button-w button-form">Back</button></a>
 </div>
 
 
 <script>
-    function functionCheck(x) {
-        console.log("a");
+    // update input folow the time now
+    var day = new Date();
+    var d = day.getDate();
+    var mth = day.getMonth() + 1;
+    var yr = day.getFullYear();
+
+    var type = "day";
+    var button = document.getElementById('btn-statistical');
+    button.href = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
+
+
+    // catch even
+    function myDate(){
+
+        var times = document.getElementById('date').value;
+        var mydate = new Date(times);
+        d = mydate.getDate();
+        mth = mydate.getMonth() + 1;
+        yr = mydate.getFullYear();
+        button.href = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
     }
+
+    function myOption(){
+        var select = document.getElementById('typeStatistical');
+        var i = 0;
+        for(var i; i<select.length;i++){
+            if(select.options[i].selected)
+            break
+        }
+        type = select.options[i].value;
+        select.options[i].selected = "true";
+
+
+        button.href = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
+       
+    }
+
+
 </script>
+
+
+
+
+
+
+
+
+
