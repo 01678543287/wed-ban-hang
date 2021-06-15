@@ -65,24 +65,37 @@ class CategoryController {
     //         )
     //         .catch(next);
     // }
-    show(req, res, next) {
-        var products = [];
-        Product.aggregate([
-            {
-                $lookup: {
-                    from: 'categories',
-                    localField: 'cateID',
-                    foreignField: '_id',
-                    as: 'category'
-                }
-            }
-            ],) 
-            .exec(function(err, products){
-                console.log(products[2].category[0]._id)
-                if (err) throw err;
-                res.render('categorys/show', {products: products});
-            });
-            
+
+
+    // [GET] /categorys/ao-thun
+    showaothun(req, res, next) {
+        // var products = [];
+        // Product.aggregate([
+        //     {
+        //         $lookup: {
+        //             from: 'categories',
+        //             localField: 'cateID',
+        //             foreignField: '_id',
+        //             as: 'category'
+        //         }
+        //     }
+        //     ],) 
+        //     // .exec(function(err, products){
+        //     //     console.log(products[2].category[0]._id);
+        //     //     var categoryID = products[2].category[0]._id;
+        //     //     if (err) throw err;
+        //     //     res.render('categorys/show', {products: products},);
+        //     // })
+        //     .then((products) => {
+        //         if(products.cateID === products.category)
+        //             res.render('categorys/show', {products: products},);
+        //     })
+        //     .catch(next);
+
+
+
+
+
             // .then((products) =>
             //     //console.log(product),
             //     // {
@@ -111,7 +124,57 @@ class CategoryController {
             //     // }
             // }
             
+
+
+
+            Product.find({cateID: 'ao'})
+                .then((products) =>
+                    res.render('categorys/show', {
+                        products: mutipleMongooseToObject(products),
+                    }),
+                )
+                .catch(next);
         
+    }
+    // [GET] /categorys/quan
+    showquan(req, res, next) {
+        Product.find({cateID: 'quan'})
+                .then((products) =>
+                    res.render('categorys/show', {
+                        products: mutipleMongooseToObject(products),
+                    }),
+                )
+                .catch(next);
+    }
+    // [GET] /categorys/ao-khoac
+    showaokhoac(req, res, next) {
+        Product.find({cateID: 'ao-khoac'})
+                .then((products) =>
+                    res.render('categorys/show', {
+                        products: mutipleMongooseToObject(products),
+                    }),
+                )
+                .catch(next);
+    }
+    // [GET] /categorys/giay
+    showgiay(req, res, next) {
+        Product.find({cateID: 'giay'})
+                .then((products) =>
+                    res.render('categorys/show', {
+                        products: mutipleMongooseToObject(products),
+                    }),
+                )
+                .catch(next);
+    }
+    // [GET] /categorys/non
+    shownon(req, res, next) {
+        Product.find({cateID: 'non'})
+                .then((products) =>
+                    res.render('categorys/show', {
+                        products: mutipleMongooseToObject(products),
+                    }),
+                )
+                .catch(next);
     }
 }
 module.exports = new CategoryController();
