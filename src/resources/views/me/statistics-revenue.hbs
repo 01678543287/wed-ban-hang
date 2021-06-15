@@ -69,7 +69,7 @@
 
     var type = "day";
     var button = document.getElementById('btn-statistical');
-    button.href = ("http://localhost/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
+    button.href = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
 
 
     // catch even
@@ -80,7 +80,7 @@
         d = mydate.getDate();
         mth = mydate.getMonth() + 1;
         yr = mydate.getFullYear();
-        button.href = ("http://localhost/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
+        button.href = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
     }
 
     function myOption(){
@@ -94,9 +94,10 @@
         select.options[i].selected = "true";
 
 
-        button.href = ("http://localhost/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
+        button.href = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
        
     }
+
 
 </script>
 
