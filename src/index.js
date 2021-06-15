@@ -10,8 +10,11 @@ require('./config/passport');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const cron = require('node-cron');
+const moment = require('moment');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
+const UpdateController = require('./app/controllers/UpdateController');
 app.use(session({
     secret: 'adsa897adsa98bs',
     resave: false,
@@ -47,6 +50,9 @@ app.use(
 );
 app.use(express.json());
 
+//update every day when 00:00
+cron.schedule('0 0 1 * *', UpdateController.updateDatabase);
+
 //HTTP logger
 //app.use(morgan('combined'));
 
@@ -57,6 +63,7 @@ app.engine(
         extname: '.hbs',
         helpers: {
             sum: (a,b) => a + b,
+            formatDate : (date) => moment(date).format("DD/MM/YYYY")
         }
     }),
 );

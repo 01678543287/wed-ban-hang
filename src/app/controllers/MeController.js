@@ -31,14 +31,14 @@ class MeController {
         const date = new Date();
         var year = date.getFullYear();
         var month = date.getMonth();
-        var day = date.getDay();
+        var day = date.getDate();
         
         var distanceDay = 0;
         var distanceMonth = 0;
         var distanceYear = 0;
         var date_output="";//xuat ngay cua  bang doanh thu
         if(req.query.type == 'year'){
-            if(req.query.year != null) year = req.query.year;
+            if(req.query.year != null) year = Number(req.query.year);
             month = 0;
             day = 0;
             distanceYear = 1;
@@ -52,7 +52,7 @@ class MeController {
             date_output="tháng "+Number(month+1) + "/" +year ;
         }
         else if(req.query.type == 'day'){ 
-            if(req.query.year != null) year = req.query.year;
+            if(req.query.year != null) year = Number(req.query.year);
             if(req.query.month != null) month = Number(req.query.month) - 1;
             if(req.query.day != null) day = Number(req.query.day) ;
             distanceDay = 1;
