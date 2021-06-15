@@ -2,6 +2,7 @@
     <h3>Thêm sản phẩm</h3>
 
     <form method="POST" action="/products/store">
+        
         <div class="form-group">
             <label for="name">Thể loại</label>
             <select class="form-control form-control-sm" id="cateID" name="cateID">
@@ -33,7 +34,7 @@
         </div>
         <div class="form-group">
             <label for="price">Giá</label>
-            <input type="text" class="form-control" id="price" name="price" required>
+            <input type="number" class="form-control" id="price" name="price" required>
         </div>
         <div>
             <button type="submit" class="button-w mt-4 mb-4">Thêm Sản Phẩm</button>

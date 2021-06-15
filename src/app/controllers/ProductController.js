@@ -4,7 +4,7 @@ const { mongooseToObject } = require('../../util/mongoose');
 const { mutipleMongooseToObject } = require('../../util/mongoose');
 
 
-class SiteController {
+class ProductController {
     // [GET] /products
     index(req, res, next) {
         Product.find({})
@@ -35,7 +35,7 @@ class SiteController {
     }
     // [GET] /products/:slug
     show(req, res, next) {
-        Product.findOne({ slug: req.params.slug })
+        Product.findOne({ slug: req.params.slug})
             .then((product) =>
                 res.render('products/show', {
                     product: mongooseToObject(product),
@@ -43,7 +43,7 @@ class SiteController {
             )
             .catch(next);
     }
-    // [GET] /courses/:id/edit
+    // [GET] /products/:id/edit
     edit(req, res, next) {
         Product.findById(req.params.id)
             .then((product) =>
@@ -54,29 +54,29 @@ class SiteController {
             .catch(next);
     }
 
-    // [PUT] /courses/:id
+    // [PUT] /products/:id
     update(req, res, next) {
         Product.updateOne({ _id: req.params.id }, req.body)
             .then(() => res.redirect('/me/stored/products'))
             .catch(next);
     }
-    //[DELETE] courses/:id
+    //[DELETE] products/:id
     delete(req, res, next) {
         Product.delete({_id: req.params.id},)
             .then(() => res.redirect('/me/stored/products'))
             .catch(next);
     }
-    //[PATCH] courses/:id/restore
+    //[PATCH] products/:id/restore
     restore(req, res, next) {
         Product.restore({_id: req.params.id},)
             .then(() => res.redirect('back'))
             .catch(next);
     }
-    //[DELETE] courses/:id/force
+    //[DELETE] products/:id/force
     forceDelete(req, res, next) {
         Product.deleteOne({_id: req.params.id},)
             .then(() => res.redirect('/me/trash/products'))
             .catch(next);
     }
 }
-module.exports = new SiteController();
+module.exports = new ProductController();

@@ -19,6 +19,7 @@ app.use(session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     cookie: { maxAge: 180 * 60 * 1000 }
 }));
+
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -29,9 +30,10 @@ app.use(function(req, res, next){
     next();
 });
 const route = require('./routes');
-const db = require('./config/db');
+
 
 //Connect to DB
+const db = require('./config/db');
 db.connect();
 //use 
 app.use(methodOverride('_method'));

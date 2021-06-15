@@ -6,7 +6,7 @@ const {mutipleMongooseToObject} = require('../../util/mongoose');
 const {mutipleOrderToRevenue} = require('../../util/mongoose');
 
 
-class SiteController {
+class MeController {
     //[GET] /me/stored/products
     storedProducts(req, res, next) {
         Promise.all([Product.find({}), Product.countDocumentsDeleted()])
@@ -123,4 +123,4 @@ class SiteController {
     }
 
 }
-module.exports = new SiteController();
+module.exports = new MeController();

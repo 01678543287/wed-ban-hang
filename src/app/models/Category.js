@@ -8,7 +8,8 @@ const Schema = mongoose.Schema;
 
 
 const Category = new Schema({
-    name: {type: String},
+  name: {type: String},
+  slug: { type: String, slug: 'name', unique: true },
   },
   {
     timestamps: true
