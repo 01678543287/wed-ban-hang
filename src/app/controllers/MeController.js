@@ -32,34 +32,40 @@ class SiteController {
         var year = date.getFullYear();
         var month = date.getMonth();
         var day = date.getDay();
+        
         var distanceDay = 0;
         var distanceMonth = 0;
         var distanceYear = 0;
+        var date_output="";//xuat ngay cua  bang doanh thu
         if(req.query.type == 'year'){
             if(req.query.year != null) year = req.query.year;
             month = 0;
             day = 0;
             distanceYear = 1;
+            date_output="năm "+year;
         }
         else if(req.query.type == 'month' || Object.keys(req.query).length == 0){
-            if(req.query.year != null) year = req.query.year;
-            if(req.query.month != null) month = req.query.month - 1;
+            if(req.query.year != null) year = Number(req.query.year);
+            if(req.query.month != null) month = Number(req.query.month) - 1;
             day = 0;
             distanceMonth = 1;
+            date_output="tháng "+Number(month+1) + "/" +year ;
         }
-        else if(req.query.type == 'day'){
+        else if(req.query.type == 'day'){ 
             if(req.query.year != null) year = req.query.year;
-            if(req.query.month != null) month = req.query.month - 1;
-            if(req.query.day != null) day = req.query.day - 1; 
+            if(req.query.month != null) month = Number(req.query.month) - 1;
+            if(req.query.day != null) day = Number(req.query.day) ;
             distanceDay = 1;
+            date_output="ngày " +day+ "/"+Number(month+1) + "/" +year ;
         }
+       
         Order.find({updatedAt : {
-            "$gte": new Date(year, month , day, ), 
-            "$lt": new Date(year + distanceYear, month + distanceMonth, day + distanceDay)
+            "$gte": new Date(year, month , day ),  // xet tu ngay hien tai den hom sau nhe 
+            "$lt": new Date(Number(year) + Number(distanceYear), Number(month) + Number(distanceMonth), Number(day) + Number(distanceDay))// Kieu du lieu k phai so nen thanh ra noi chuoi
             }
         })
             .then(orders => res.render('me/statistics-revenue', {
-                month: month,
+                output: date_output,
                 orders : mutipleMongooseToObject(orders),
                 revenue : mutipleOrderToRevenue(orders)
             }))
