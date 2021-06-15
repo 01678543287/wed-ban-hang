@@ -8,7 +8,7 @@
             <select class="form-control form-control-sm" id="cateID" name="cateID">
                 <label class="form-label" for="field-120334">Thể Loại</label>
                 {{#each categorys}}
-                    <option value="{{this._id}}">{{this.name}}</option>
+                    <option value="{{this.slug}}">{{this.name}}</option>
                 {{/each}}
              </select>
         </div>

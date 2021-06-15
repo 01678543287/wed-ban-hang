@@ -11,7 +11,12 @@ router.get('/:id/edit', categoryController.edit);
 router.put('/:id', categoryController.update);
 router.delete('/:id/force', categoryController.forceDelete);
 router.get('/:id/edit', categoryController.edit);
-router.get('/show', categoryController.show);
+
+router.get('/ao-thun', categoryController.showaothun);
+router.get('/quan', categoryController.showquan);
+router.get('/ao-khoac', categoryController.showaokhoac);
+router.get('/giay', categoryController.showgiay);
+router.get('/non', categoryController.shownon);
 
 
 
