@@ -10,7 +10,7 @@ class CategoryController {
 
     // [GET] /categorys/:slug
     list(req, res, next) {
-        Promise.all([Product.find({cateID: req.params.slug}), Product.countDocumentsDeleted()])
+        Promise.all([Product.find({cateID: req.params.slug}), Product.countDocumentsDeleted()]).sort({createdAt:-1})
             .then(([products, deletedCount]) => 
                 res.render('categorys/list', {
                     deletedCount,
@@ -77,7 +77,24 @@ class CategoryController {
     //         .catch(next);
     // }
 
-
+    // [GET] /categorys/hang-moi
+    shownew(req, res, next) {
+        const date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        var day = date.getDate();
+        Product.find({createdAt: {
+            "$gte": new Date(year, month , day-30, ), 
+            "$lt": new Date(year, month, day)
+            }})
+            .sort({createdAt:-1})
+            .then((products) =>
+                res.render('categorys/show', {
+                    products: mutipleMongooseToObject(products),
+                }),
+            )
+            .catch(next);
+    }
     // [GET] /categorys/ao-thun
     showaothun(req, res, next) {
         // var products = [];
@@ -138,7 +155,7 @@ class CategoryController {
 
 
 
-            Product.find({cateID: 'ao'})
+            Product.find({cateID: 'ao'}).sort({createdAt:-1})
                 .then((products) =>
                     res.render('categorys/show', {
                         products: mutipleMongooseToObject(products),
@@ -149,7 +166,7 @@ class CategoryController {
     }
     // [GET] /categorys/quan
     showquan(req, res, next) {
-        Product.find({cateID: 'quan'})
+        Product.find({cateID: 'quan'}).sort({createdAt:-1})
                 .then((products) =>
                     res.render('categorys/show', {
                         products: mutipleMongooseToObject(products),
@@ -159,7 +176,7 @@ class CategoryController {
     }
     // [GET] /categorys/ao-khoac
     showaokhoac(req, res, next) {
-        Product.find({cateID: 'ao-khoac'})
+        Product.find({cateID: 'ao-khoac'}).sort({createdAt:-1})
                 .then((products) =>
                     res.render('categorys/show', {
                         products: mutipleMongooseToObject(products),
@@ -169,7 +186,7 @@ class CategoryController {
     }
     // [GET] /categorys/giay
     showgiay(req, res, next) {
-        Product.find({cateID: 'giay'})
+        Product.find({cateID: 'giay'}).sort({createdAt:-1})
                 .then((products) =>
                     res.render('categorys/show', {
                         products: mutipleMongooseToObject(products),
@@ -179,7 +196,7 @@ class CategoryController {
     }
     // [GET] /categorys/non
     shownon(req, res, next) {
-        Product.find({cateID: 'non'})
+        Product.find({cateID: 'non'}).sort({createdAt:-1})
                 .then((products) =>
                     res.render('categorys/show', {
                         products: mutipleMongooseToObject(products),

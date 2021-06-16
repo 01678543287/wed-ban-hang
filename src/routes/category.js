@@ -13,6 +13,7 @@ router.delete('/:id/force', categoryController.forceDelete);
 router.get('/:id/edit', categoryController.edit);
 router.get('/:slug/stored', categoryController.list);
 
+router.get('/hang-moi', categoryController.shownew);
 router.get('/ao-thun', categoryController.showaothun);
 router.get('/quan', categoryController.showquan);
 router.get('/ao-khoac', categoryController.showaokhoac);

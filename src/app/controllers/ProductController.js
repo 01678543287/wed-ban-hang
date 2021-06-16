@@ -7,7 +7,7 @@ const { mutipleMongooseToObject } = require('../../util/mongoose');
 class ProductController {
     // [GET] /products
     index(req, res, next) {
-        Product.find({})
+        Product.find({}).sort({createdAt:-1})
             .then(products => {
                 res.render('products',{
                     products: mutipleMongooseToObject(products)
