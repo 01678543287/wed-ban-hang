@@ -10,7 +10,7 @@ class CategoryController {
 
     // [GET] /categorys/:slug
     list(req, res, next) {
-        Promise.all([Product.find({cateID: req.params.slug}), Product.countDocumentsDeleted()]).sort({createdAt:-1})
+        Promise.all([Product.find({cateID: req.params.slug}), Product.countDocumentsDeleted()])
             .then(([products, deletedCount]) => 
                 res.render('categorys/list', {
                     deletedCount,

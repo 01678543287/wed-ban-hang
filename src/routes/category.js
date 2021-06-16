@@ -11,6 +11,7 @@ router.get('/:id/edit', categoryController.edit);
 router.put('/:id', categoryController.update);
 router.delete('/:id/force', categoryController.forceDelete);
 router.get('/:id/edit', categoryController.edit);
+router.patch('/:id/restore', categoryController.restore);
 router.get('/:slug/stored', categoryController.list);
 
 router.get('/hang-moi', categoryController.shownew);
