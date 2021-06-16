@@ -9,6 +9,19 @@ const Revenue = require('../models/Revenue');
 
 class UpdateController{
     updateDatabase(res, req, next){
+        date = new Date();
+        revenueEveryDay(year, month, day);
+        if(date.getMonth != month)
+            setTimeout(function(){
+                revenueEveryMonth(year, month);
+            }, 1000);
+        if(date.getFullYear != year)
+            setTimeout(function(){
+                revenueEveryYear(year);
+            }, 2000);
+        month = date.getMonth();
+        day = date.getDate();
+        year = date.getFullYear();
     }
 }
 
