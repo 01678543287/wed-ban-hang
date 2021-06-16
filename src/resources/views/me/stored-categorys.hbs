@@ -1,10 +1,10 @@
 <div class="mt-4 mb-5" style="position: relative;">
-    <div>
+    <div mb-2>
       <h3>Danh mục sản phẩm</h3>
-      <a href="/me/trash/categorys">Thùng rác ({{deletedCount}})</a>
+      <a href="/me/trash/categorys" class="button-w button-action button-delete">Thùng rác ({{deletedCount}})</a>
     </div>
-    <div>
-      <a href="/categorys/create">Thêm danh mục sản phẩm</a>
+    <div class="mt-2">
+      <a href="/categorys/create" class="button-w button-action button-add">Thêm danh mục sản phẩm</a>
     </div>
     <table id="table-w" class="table mt-4">
         <thead>
@@ -12,7 +12,7 @@
                 <th scope="col" style="min-width: 50px;">#</th>
                 <th scope="col">Tên danh mục</th>
                 <th scope="col">Thời gian thêm</th>
-                <th scope="col" >Edit</th>
+                <th scope="col" >Action</th>
             </tr>
         </thead>
         <tbody>
@@ -22,9 +22,9 @@
                 <td>{{this.name}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
-                    <a href="/categorys/{{this._id}}/edit" class="btn btn-link" style="text-decoration: none; color: black;">Sửa</a>
-                    <a href="" class="btn btn-Xoa" data-toggle="modal" data-id="{{this._id}}" data-target="#btnXoa-Product-modal">Xóa</a>
-                    <a href="/categorys/{{this.slug}}/stored" class="btn btn-link" style="text-decoration: none; color: black;">Xem</a>
+                    <a href="/categorys/{{this.slug}}/stored" class="button-w button-action button-add">Xem</a>
+                    <a href="/categorys/{{this._id}}/edit" class="button-w button-action button-edit">Sửa</a>
+                    <a href="" data-toggle="modal" data-id="{{this._id}}" data-target="#btnXoa-Product-modal" class="button-w button-action button-delete">Xóa</a>
                 </td>
             </tr>
             {{else}}

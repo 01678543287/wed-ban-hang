@@ -1,10 +1,10 @@
 <div class="mt-4 mb-5" style="position: relative;">
-    <div>
+    <div class="mb-2">
       <h3>Sản phẩm</h3>
-      <a href="/me/trash/products">Thùng rác ({{deletedCount}})</a>
+      <a href="/me/trash/products" class="button-w button-action button-delete" >Thùng rác ({{deletedCount}})</a>
     </div>
     <div>
-      <a href="/products/create">Thêm sản phẩm</a>
+      <a href="/products/create" class="button-w button-action button-add">Thêm sản phẩm</a>
     </div>
 
     <table id="table-w" class="table mt-4">
@@ -15,7 +15,7 @@
                 <th scope="col">Giá</th>
                 <th scope="col">Mô tả</th>
                 <th scope="col" >Thời gian thêm</th>
-                <th scope="col" >Edit</th>
+                <th scope="col" style="min-width: 100px;" >Action</th>
             </tr>
         </thead>
         <tbody>
@@ -27,8 +27,8 @@
                 <td>{{this.description}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
-                    <a href="/products/{{this._id}}/edit" class="btn btn-link" style="text-decoration: none; color:#3028a7;">Sửa</a>
-                    <a href="" class="btn btn-Xoa" data-toggle="modal" data-id="{{this._id}}" data-target="#btnXoa-Product-modal" style="text-decoration: none; color:red;">Xóa</a>
+                    <a href="/products/{{this._id}}/edit" class="button-w button-action button-edit" >Sửa</a>
+                    <a href="" class="button-w button-action button-delete" data-toggle="modal" data-id="{{this._id}}" data-target="#btnXoa-Product-modal">Xóa</a>
                 </td>
             </tr>
             {{else}}

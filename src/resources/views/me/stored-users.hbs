@@ -1,7 +1,7 @@
 <div class="mt-4 mb-5" style="position: relative;">
     <div>
       <h3>Danh sách tài khoản</h3>
-      <a href="/me/blacklist/user">Danh sách đen ({{deletedCount}})</a>
+      <a href="/me/blacklist/user"class="button-w button-action button-delete" >Danh sách đen ({{deletedCount}})</a>
     </div>
 
     <table id="table-w" class="table mt-4">
@@ -13,7 +13,7 @@
                 <th scope="col">Số điện thoại</th>
                 <th scope="col">Địa chỉ email</th>
                 <th scope="col">Thời gian tạo tài khoản</th>
-                <th scope="col">Edit</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -24,10 +24,9 @@
                 <td>{{this.name}}</td>
                 <td>{{this.phonenumber}}</td>
                 <td>{{this.email}}</td>
-
-                <td>{{formateDate this.createdAt}}</td>
+                <td>{{formatDate this.createdAt}}</td>
                 <td>
-                    <a href="" class="btn btn-xoa" data-toggle="modal" data-id="{{this._id}}" data-target="#btnBlacklist-user" style="color: red;">Blacklist</a>
+                    <a href="" class="button-w button-action button-delete" data-toggle="modal" data-id="{{this._id}}" data-target="#btnBlacklist-user" style="color: red;">Blacklist</a>
                 </td>
             </tr>
             {{else}}

@@ -1,7 +1,7 @@
 <div class="mt-4 mb-5" style="position: relative;">
   <div>
     <h3>Tài khoản blacklist</h3>
-    <a href="/me/stored/user">Danh sách tài khoản</a>
+    <a href="/me/stored/user" class="button-w button-action button-add">Danh sách tài khoản</a>
   </div>
     
     <table id="table-w" class="table mt-4">
@@ -12,7 +12,9 @@
                 <th scope="col">Họ và tên</th>
                 <th scope="col">Số điện thoại</th>
                 <th scope="col">Địa chỉ email</th>
-                <th scope="col">Thời gian tạo tài khoản</th>
+                {{!-- <th scope="col">Thời gian tạo tài khoản</th> --}}
+                <th scope="col" style="min-width: 220px;" >Action</th>
+
             </tr>
         </thead>
         <tbody>
@@ -22,10 +24,11 @@
                 <td>{{this.username}}</td>
                 <td>{{this.name}}</td> 
                 <td>{{this.phonenumber}}</td>
-                <td>{{this.createdAt}}</td>
+                <td>{{this.email}}</td>
+                {{!-- <td>{{this.createdAt}}</td> --}}
                 <td>
-                    <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}" style="text-decoration: none; color:#3028a7;">Khôi Phục</a>
-                    <a href="" class="btn btn-Xoa" data-id="{{this._id}}" data-toggle="modal" data-target="#btnXoa-User-modal" style="text-decoration: none; color:red;">Xóa vĩnh viễn</a>
+                    <a href="" class="button-w button-action button-add" data-id="{{this._id}}" >Khôi Phục</a>
+                    <a href="" class="button-w button-action button-delete" data-id="{{this._id}}" data-toggle="modal" data-target="#btnXoa-User-modal" >Xóa vĩnh viễn</a>
 
                 </td>
             </tr>
