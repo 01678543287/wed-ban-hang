@@ -58,7 +58,6 @@ router.post('/sign-in',
 router.get('/logout', isLoggedIn,UserController.logOut);
 router.get('/profile', isLoggedIn, UserController.profile);
 router.get('/forgot-password', UserController.forgotPassword);
-router.get('/forgot-password', UserController.forgotPassword);
 router.post('/forgot-password', UserController.validPassword);
 router.use('/', notLoggedIn, function(req, res, next){
     res.redirect('/user/sign-in');
