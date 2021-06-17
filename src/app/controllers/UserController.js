@@ -2,6 +2,16 @@ const User = require('../models/User');
 const { mongooseToObject } = require('../../util/mongoose');
 const { mutipleMongooseToObject } = require('../../util/mongoose');
 const passport = require('passport');
+var nodemailer = require('nodemailer');
+var verification;
+
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'samab1541@gmail.com',
+    pass: '1234567qety'
+  }
+});
 
 
 class UserController {
@@ -77,6 +87,34 @@ class UserController {
             .then(() => res.redirect('back'))
             .catch(next);
     }
+    // [GET] user/forgot-password
+    forgotPassword(req, res, next){
+        res.render('user/forgot-password',{
+            hasEmail:false
+        });
+    }
+    // [POST] user/forgot-password
+    validPassword(req, res, next){
+        if(! req.params.isValid){
+            User.findOne({username : req.params.username}, function(err, user){
+                if(user != null){
+                    verification = randomString(6);
+                    sendEmail(user.email, verification);
+                }
+                res.render('user/forgot-password',{
+                    hasEmail : (user != null),
+                    email : user.email,
+                    verification : verification,
+                })
+            })
+        }
+        else if(req.params.isValid){
+            User.findOne({username : req.params.usernam}, function(err, user){
+                user.password = user.encryptPassword(req.params.password);
+                res.redirect('/user/profile');
+            })
+        }
+    }
     //[DELETE] user/:id
     delete(req, res, next) {
         User.delete({_id: req.params.id},)
@@ -84,4 +122,33 @@ class UserController {
             .catch(next);
     }
 }
+
 module.exports = new UserController();
+
+function randomString(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   return result;
+}
+
+function sendEmail(userEmail, verification){
+    var mailOptions = {
+        from: 'samab1541@gmail.com',
+        to: userEmail,
+        subject: 'Lấy lại mật khẩu',
+        text: 'Mã xác nhận của bạn là: ' + verification + ': '  ,
+    };
+    if(user != null)
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' );
+        }
+    });
+}
