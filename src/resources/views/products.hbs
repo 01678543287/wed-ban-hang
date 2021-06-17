@@ -35,12 +35,9 @@
                         <a href="/products/{{this.slug}}">
                             <img class="card-img-top" src="{{this.image}}" alt="{{this.price}}" title="{{this.description}}">
                         </a>
-                        <div class="card-body">
+                        <div class="card-body text-truncate">
                             <a href="/products/{{this.slug}}"  style="text-decoration: none; color: #333;">
                                 <p class="card-text text-left text-truncate" >
-                                    <span class="lead font-weight-bold text-nowrap" title="{{this.description}}">
-                                      {{this.description}}
-                                    </span> <br>
                                     <span class="font-weight-bold">
                                        Sản phẩm: {{this.name}}
                                     </span> <br>    
@@ -50,6 +47,9 @@
     
                                 </p>
                             </a>
+                                <span class="lead font-weight-bold text-nowrap" title="{{this.description}}">
+                                  {{this.description}}
+                                </span>                               
 
                         </div>
                     </div>
