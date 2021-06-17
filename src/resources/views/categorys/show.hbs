@@ -1,26 +1,36 @@
 <div class="container-fluid" style="padding: unset; margin: unset;">
 
     <section class="slider-section">
-        <div class="row">
+        <div class="row" style="margin-top: 2px;">
             <div class="col-6 col-sm-12 ">
-                <img src="/img/products/bia.png" alt="ảnh bìa" style="width: 100%;height: auto;" />
+                <img src="https://i.pinimg.com/originals/a5/cb/fe/a5cbfe3fcc1932ba364ef3cf75313415.png" alt="ảnh bìa" style="width: 100%;height: auto;" >
             </div>
         </div>
     </section>
     {{!-- show sản phẩm --}}
-    <div style="margin: 20px 135px;"">
-        <div class="mt-4">
-            <div class="row">
+    <div style="margin: 20px 5%;">
+        <div class="mt-4" style="padding: 20px;">
+            <div class="row p-4">
                 {{#each products}}
-                <div class="col-sm-6 col-lg-3">
+                <div class="col-sm-6 col-lg-3 p-3">
                     <div class="card card-product-item">
                         <a href="/products/{{this.slug}}">
-                            <img class="card-img-top" src="{{this.image}}" alt="{{this.price}}">
+                            <img class="card-img-top" src="{{this.image}}" alt="{{this.price}}" title="{{this.description}}">
                         </a>
                         <div class="card-body">
-                            <a href="/products/{{this.slug}}">
-                                <h5 class="card-title text-center">{{this.name}}</h5>
-                                <p class="card-text text-center">{{this.price}}</p>
+                            <a href="/products/{{this.slug}}"  style="text-decoration: none; color: #333;">
+                                <p class="card-text text-left text-truncate" >
+                                    <span class="lead font-weight-bold text-nowrap" title="{{this.description}}">
+                                      {{this.description}}
+                                    </span> <br>
+                                    <span class="font-weight-bold">
+                                       Sản phẩm: {{this.name}}
+                                    </span> <br>    
+                                    <span class="font-weight-bold">
+                                       Giá: <strong style="color: #17a2b8;">{{this.price}}đ </strong><br> 
+                                    </span>
+    
+                                </p>
                             </a>
 
                         </div>

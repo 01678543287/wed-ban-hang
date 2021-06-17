@@ -83,8 +83,9 @@ class CategoryController {
         var year = date.getFullYear();
         var month = date.getMonth();
         var day = date.getDate();
+
         Product.find({createdAt: {
-            "$gte": new Date(year, month , day-30, ), 
+            "$gte": new Date(year, month , day-30, ),
             "$lt": new Date(year, month, day)
             }})
             .sort({createdAt:-1})

@@ -12,7 +12,7 @@ module.exports = function Cart(oldCart) {
         }
         storedItem.qty++;
         storedItem.price = storedItem.item.price * storedItem.qty;
-        storedItem.size += size;
+        storedItem.size += size+ ", ";
 
         this.nameProduct += storedItem.item.name + ", ";
         this.totalQty++;

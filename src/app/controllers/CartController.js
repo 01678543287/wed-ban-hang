@@ -27,7 +27,7 @@ class CartController {
           return res.render('cart' , {products: null});
        }
       var cart = new Cart(req.session.cart);
-      res.render('cart', {products: cart.generateArray(), totalPrice: cart.totalPrice, size: cart.size});
+      res.render('cart', {products: cart.generateArray(), totalPrice: cart.totalPrice,});
     };
     //[GET] /cart/:id/reduce
     reduce(req, res, next) { 
