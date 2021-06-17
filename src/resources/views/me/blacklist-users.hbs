@@ -1,7 +1,7 @@
 <div class="mt-4 mb-5" style="position: relative;">
   <div>
     <h3>Tài khoản blacklist</h3>
-    <a href="/me/stored/user">Danh sách tài khoản</a>
+    <a href="/me/stored/user" class="button-w button-action button-add">Danh sách tài khoản</a>
   </div>
     
     <table id="table-w" class="table mt-4">
@@ -24,8 +24,8 @@
                 <td>{{this.phonenumber}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
-                    <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}" style="text-decoration: none; color:#3028a7;">Khôi Phục</a>
-                    <a href="" class="btn btn-Xoa" data-id="{{this._id}}" data-toggle="modal" data-target="#btnXoa-User-modal" style="text-decoration: none; color:red;">Xóa vĩnh viễn</a>
+                    <a href="" class="button-w button-action button-add btn-restore" data-id="{{this._id}}" style="text-decoration: none; color:#3028a7;">Khôi Phục</a>
+                    <a href="" class="button-w button-action button-delete" data-id="{{this._id}}" data-toggle="modal" data-target="#btnXoa-User-modal" style="text-decoration: none; color:red;">Xóa vĩnh viễn</a>
 
                 </td>
             </tr>

@@ -1,14 +1,35 @@
-<div class="mt-4">
+<div class="mt-4" style="margin-bottom: 100px;">
+      <div style="font-weight: 500; padding:20px 40px 5px">
+        <p>
+        Trang chủ >
+        <span>Thông tin sản phẩm</span>
+        </p>
+        <h4 class="title"> 
+            <i class="fas fa-dragon mr-2"></i>Sản phẩm mới nhất  
+            <hr>
+        </h4>
+
+
+    </div>
     <div class="row">
         <div class="col-lg-2">
-            <img src="{{product.image}}" frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.image}}'" />
-            <img src="{{product.imageshow1}}" frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.imageshow1}}'"/>
-            <img src="{{product.imageshow2}}" frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.imageshow2}}'"/>
+          <a href="#"  onclick="showImg(this)">
+            <img src="{{product.image}}" class="img-show" frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.image}}'" />
+
+          </a>
+          <a href="#"  onclick="showImg(this)">
+            <img src="{{product.imageshow1}}"class="img-show" frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.imageshow1}}'"/>
+
+          </a>
+          <a href="#"  onclick="showImg(this)">
+            <img src="{{product.imageshow2}}" class="img-show"frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.imageshow2}}'"/>
+
+          </a>
         </div>
         <div class="col-lg-7" >
-                <img src="{{product.image}}" alt="" id="large-image"  style="width: 100%; height: auto;border: ridge 2px black; margin: 20px; " />
+                <img class="mainImg" src="{{product.image}}" alt="" id="large-image"  style="width: 100%; height: auto;border: ridge 2px black; margin: 20px; " />
         </div>
-        <div class="col-lg-3" >
+        <div class="col-lg-3 pl-4" >
             <h1 style="font-size: 50px ; color: black; padding-bottom: 15x;border-bottom: ridge 2px; font-weight: 800;">{{product.name}}</h1>
             <h2 style="margin-bottom: 10px;">Giá: {{product.price}}đ</h2>
             <h2>Mô tả: </h2>
@@ -59,4 +80,16 @@
 
   });
 
+  function showImg(img){
+    var mainImg = document.getElementsByClassName('mainImg')[0];
+    
+    var $$ = document.getElementsByClassName('img-show');
+    for (const element of $$) {
+      if(element == img){
+        mainImg.setAttribute("src", element.src);
+        break;
+      }
+
+    }
+  }
 </script>
