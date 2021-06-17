@@ -8,6 +8,7 @@ class CartController {
     //[GET] cart/:id/add-to-cart
     addToCart(req, res, next) {
       var productId = req.params.id;
+      var size = req.query.size;
       var cart = new Cart(req.session.cart ? req.session.cart:{products: {}});
 
 
@@ -15,7 +16,7 @@ class CartController {
         if(err) {
           return res.redirect('back');
         }
-        cart.add(product, product.id);
+        cart.add(product, product.id, size);
         req.session.cart = cart;
         res.redirect('back');
       }); 
@@ -26,7 +27,7 @@ class CartController {
           return res.render('cart' , {products: null});
        }
       var cart = new Cart(req.session.cart);
-      res.render('cart', {products: cart.generateArray(), totalPrice: cart.totalPrice});
+      res.render('cart', {products: cart.generateArray(), totalPrice: cart.totalPrice, size: cart.size});
     };
     //[GET] /cart/:id/reduce
     reduce(req, res, next) { 

@@ -157,6 +157,7 @@ class MeController {
             "$lt": new Date(year + distanceYear, month + distanceMonth, day + distanceDay)
             }
         },function(err, order){
+            if(order == null) return;
             var wb = new xl.Workbook();
             var ws = wb.addWorksheet('Sheet 1');
             var style = wb.createStyle({
@@ -220,6 +221,7 @@ class MeController {
             },
             type: req.query.type
         },function(err, revenue){
+            if(revenue == null) return;
             var wb = new xl.Workbook();
                 
             var ws = wb.addWorksheet('Sheet 1');

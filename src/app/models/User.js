@@ -13,7 +13,8 @@ const User = new Schema({
     phonenumber: {type: String},
     address: {type: String},
     email: {type: String},
-    name: {type: String}
+    name: {type: String},
+    verification : {type: String}
   },
   {
     timestamps: true
@@ -32,6 +33,14 @@ User.methods.encryptPassword = function(password){
 
 User.methods.validPassword = function(password){
   return bcrypt.compareSync(password, this.password);
+}
+
+User.methods.encryptVerification = function(verification){
+  return bcrypt.hashSync(verification, bcrypt.genSaltSync(5), null)
+};
+
+User.methods.validVerification = function(verification){
+  return bcrypt.compareSync(verification, this.verification);
 }
 // them comment de push
 module.exports = mongoose.model('User', User);

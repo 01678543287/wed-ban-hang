@@ -90,29 +90,56 @@ class UserController {
     // [GET] user/forgot-password
     forgotPassword(req, res, next){
         res.render('user/forgot-password',{
-            hasEmail:false
+            hasUsername:false
         });
     }
     // [POST] user/forgot-password
     validPassword(req, res, next){
-        if(! req.params.isValid){
+        if(req.query.hasUsername == 'true' && req.query.hasUser == 'false'){
             User.findOne({username : req.params.username}, function(err, user){
                 if(user != null){
                     verification = randomString(6);
                     sendEmail(user.email, verification);
+                    user.verification = user.encryptVerification(verification)
+                    res.render('user/forgot-password',{
+                        hasUser : true,
+                        hasUsername: true,
+                        username : req.params.username,
+                        email : user.email,
+                    })
                 }
-                res.render('user/forgot-password',{
-                    hasEmail : (user != null),
-                    email : user.email,
-                    verification : verification,
-                })
+                if(user == null){
+                    res.render('user/forgot-password',{
+                        hasUser : false,
+                        hasUsername : true,
+                        username : req.params.username,
+                    })
+                }
+                
             })
         }
-        else if(req.params.isValid){
-            User.findOne({username : req.params.usernam}, function(err, user){
-                user.password = user.encryptPassword(req.params.password);
-                res.redirect('/user/profile');
+        if(req.query.hasUsername == 'true' && req.query.hasUser == 'true'){
+            User.findOne({username : req.params.username}, function(err, user){
+                if(user.validVerification(req.params.verification)){
+                    res.render('user/forgot-password',{
+                        hasUser :true,
+                        hasUsername : true,
+                        isValid : true,
+                        username : req.params.username,
+                    })
+                }
+                if(!user.validVerification(req.params.verification)){
+                    res.render('user/forgot-password',{
+                        hasUser :true,
+                        hasUsername : true,
+                        isValid : false,
+                        username : req.params.username,
+                    })
+                }
             })
+        }
+        if(req.query.isValid == 'true'){
+            user.password = user.encryptPassword(req.params.password);
         }
     }
     //[DELETE] user/:id
