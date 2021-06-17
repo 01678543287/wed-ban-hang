@@ -3,6 +3,7 @@ const {mutipleMongooseToObject} = require('../../util/mongoose');
 
 
 class SiteController {
+    //[GET] /
     index(req, res, next) {
         Product.find({})
             .then(products => {
@@ -12,16 +13,22 @@ class SiteController {
             })
             .catch(next);
     }
+    //[GET] /shop-system
     shopsystem(req, res, next) {
        res.render('shop-system');
     }
+    //[GET] /news
     new(req, res, next) {
         res.render('news');
-     }
-     cart(req, res, next) {
+    }
+     //[GET] /cart
+    cart(req, res, next) {
         res.render('cart');
-     }
-    
+    }
+     //[GET] /search
+    search(req, res, next) {
+        res.render('search');
+    }
 
 }
 module.exports = new SiteController();

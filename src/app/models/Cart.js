@@ -5,13 +5,14 @@ module.exports = function Cart(oldCart) {
     this.totalQty = oldCart.totalQty || 0;
     this.totalPrice = oldCart.totalPrice || 0;
 
-    this.add = function(item, id) {
+    this.add = function(item, id, size) {
         var storedItem = this.items[id];
         if(!storedItem) {
             storedItem = this.items[id] = {item: item, qty: 0, price: 0, size: ""};
         }
         storedItem.qty++;
         storedItem.price = storedItem.item.price * storedItem.qty;
+        storedItem.size += size;
 
         this.nameProduct += storedItem.item.name + ", ";
         this.totalQty++;
