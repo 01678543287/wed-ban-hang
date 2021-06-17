@@ -19,7 +19,7 @@
           </a>
           <a href="#"  onclick="showImg(this)">
             <img src="{{product.imageshow1}}"class="img-show" frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.imageshow1}}'"/>
-
+  
           </a>
           <a href="#"  onclick="showImg(this)">
             <img src="{{product.imageshow2}}" class="img-show"frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.imageshow2}}'"/>
@@ -36,9 +36,8 @@
               <h5>{{product.description}}</h5>
             <form action="/cart/{{product._id}}/add-cart" method="GET">
               <h2>Size: </h2>
-              <div class="box">
                 <label class="box" id="size">&nbsp;
-                  <input type="radio" name="size" id="size" value="S">&nbsp;
+                  <input type="radio" name="size" id="size" value="S">
                   <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);">S</span>
                 </label>
                 <label class="box">
@@ -53,11 +52,6 @@
                   <input type="radio" name="size" id="size" value="XL">&nbsp;
                   <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);">XL</span>
                 </label>
-                <label class="box">
-                  <input type="radio" name="size" id="size"  value="XXL">&nbsp;
-                  <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);">XXL</span>
-                </label>
-              </div>
               <button class="btn btn-add-cart" style="border: none;margin: 20px 0px; background: #000000; color: #FFFFFF;height: 40px;width: 200px;" type="submit" >Thêm vào giỏ hàng</button>
             </form>
             
@@ -71,18 +65,15 @@
     var productId;
     var addCartForm = document.forms['add-cart-form'];
     var addCartBtn = $('.btn-add-cart');
-
     // Restore btn clicked
     addCartBtn.click(function (e) {
       var productId = $(this).data('id');
       addCartForm.action = '/cart/' + productId + '/add-cart/';
       addCartForm.submit();
     });
-
   }); --}}
 <script>
   
-
   function showImg(img){
     var mainImg = document.getElementsByClassName('mainImg')[0];
     
@@ -92,7 +83,6 @@
         mainImg.setAttribute("src", element.src);
         break;
       }
-
     }
   }
 </script>
