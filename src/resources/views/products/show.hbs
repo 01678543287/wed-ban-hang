@@ -15,7 +15,7 @@
           </a>
           <a href="#"  onclick="showImg(this)">
             <img src="{{product.imageshow1}}"class="img-show" frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.imageshow1}}'"/>
-
+  
           </a>
           <a href="#"  onclick="showImg(this)">
             <img src="{{product.imageshow2}}" class="img-show"frameborder="0" style="width: 100% ; height: auto; border: ridge 1px black; margin: 20px;" onclick="getElementById('large-image').src='{{product.imageshow2}}'"/>
@@ -61,18 +61,15 @@
     var productId;
     var addCartForm = document.forms['add-cart-form'];
     var addCartBtn = $('.btn-add-cart');
-
     // Restore btn clicked
     addCartBtn.click(function (e) {
       var productId = $(this).data('id');
       addCartForm.action = '/cart/' + productId + '/add-cart/';
       addCartForm.submit();
     });
-
   }); --}}
 <script>
   
-
   function showImg(img){
     var mainImg = document.getElementsByClassName('mainImg')[0];
     
@@ -82,7 +79,6 @@
         mainImg.setAttribute("src", element.src);
         break;
       }
-
     }
   }
 </script>
