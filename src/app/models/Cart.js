@@ -1,7 +1,6 @@
 
 module.exports = function Cart(oldCart) {
     this.items = oldCart.items || {};
-    this.nameProduct = oldCart.nameProduct || "";
     this.totalQty = oldCart.totalQty || 0;
     this.totalPrice = oldCart.totalPrice || 0;
 
@@ -14,7 +13,6 @@ module.exports = function Cart(oldCart) {
         storedItem.price = storedItem.item.price * storedItem.qty;
         storedItem.size += size+ ", ";
 
-        this.nameProduct += storedItem.item.name + ", ";
         this.totalQty++;
         this.totalPrice += storedItem.item.price;
 
