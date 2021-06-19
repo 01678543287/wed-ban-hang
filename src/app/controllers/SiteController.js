@@ -29,6 +29,16 @@ class SiteController {
     search(req, res, next) {
         res.render('search');
     }
+    searchProduct(req, res, next) {
+        var name = req.query.name.split(' ');
+        Product.find({name: req.query.name})
+            .then(products => {
+                res.render('products', {
+                    products: mutipleMongooseToObject(products)
+                });
+            })
+            .catch(next);
+    }
 
 }
 module.exports = new SiteController();
