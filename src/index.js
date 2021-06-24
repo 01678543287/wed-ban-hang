@@ -20,16 +20,18 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
-    cookie: { maxAge: 180 * 60 * 1000 }
+    cookie: { maxAge: 180 * 60 * 1000 },
 }));
 
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash())
+app.use(flash());
 app.use(function(req, res, next){
     res.locals.login = req.isAuthenticated();
     res.locals.session = req.session;
+    res.locals.success_messages = req.flash('success');
+    res.locals.error_messages = req.flash('error');
     next();
 });
 const route = require('./routes');

@@ -1,0 +1,83 @@
+<div class="mt-4 mb-5" style="position: relative;">
+    <div class="mb-2">
+      <h3>Sản phẩm</h3>
+      <a href="/me/trash/products" class="button-w button-action button-delete" >Thùng rác ({{deletedCount}})</a>
+    </div>
+    <div>
+      <a href="/products/create" class="button-w button-action button-add">Thêm sản phẩm</a>
+    </div>
+
+    <table id="table-w" class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col" style="min-width: 50px;">#</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Tồn Kho</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td scope="row">{{sum @index 1}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.qty}}</td>
+            </tr>
+            {{else}}
+            <tr>
+              <td colspan="5" class="text-center">
+                Bạn chưa có sản phẩm nào trong kho.
+                <a href="/products/create">Thêm sản phẩm</a>
+              </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+        <a href="/me"><button type="submit" class="button-w button-form">Back</button></a>
+</div>
+
+{{!-- Confirm delete course --}}
+<div class="modal" id="btnXoa-Product-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Bạn chắc chắn muốn xóa sản phẩm này?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-product" type="button" class="btn btn-danger">Xóa</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Delete hidden form--}}
+<form name="delete-product-form" method="POST" ></form>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function(){
+        var productId;
+        var deleteForm = document.forms['delete-product-form'];
+        var btnDeleteProduct = document.getElementById('btn-delete-product');
+        //var checkboxAll = $('#checkbox-all-in');
+        //var productItemCheckBox = $('input[name="productsIds[]"]');
+        //var checkAllSubmitBtn = $('#btn-check-all-submit');
+
+        // khi dialog confirm da clicked
+        $('#btnXoa-Product-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            productId = button.data('id');
+         });
+
+        //khi nut xoa khoa hoc duoc clicked
+        btnDeleteProduct.onclick = function() {
+            deleteForm.action = '/products/' + productId +'?_method=DELETE';
+            deleteForm.submit();
+        }
+    });
+
+    
+</script>

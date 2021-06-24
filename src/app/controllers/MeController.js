@@ -254,7 +254,15 @@ class MeController {
             
         })
     }
-
+    //[GET] /me/warehouse
+    warehouse(req,res,next)
+    {
+        Product.find({id: req.param._id})
+        .then(products => res.render('me/warehouse', {
+            products: mutipleMongooseToObject(products)
+        }))
+        .catch(next);
+    }
 }
 module.exports = new MeController();
 

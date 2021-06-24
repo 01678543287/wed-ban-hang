@@ -1,3 +1,4 @@
+const Product = require('../models/Product');
 
 module.exports = function Cart(oldCart) {
     this.items = oldCart.items || {};
@@ -9,13 +10,13 @@ module.exports = function Cart(oldCart) {
         if(!storedItem) {
             storedItem = this.items[id] = {item: item, qty: 0, price: 0, size: ""};
         }
+
         storedItem.qty++;
         storedItem.price = storedItem.item.price * storedItem.qty;
-        storedItem.size += size+ ", ";
+        storedItem.size += size+ " ";
 
         this.totalQty++;
         this.totalPrice += storedItem.item.price;
-
     }
 
     this.reduceByOne = function(id) {
