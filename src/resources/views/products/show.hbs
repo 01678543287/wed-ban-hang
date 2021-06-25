@@ -48,7 +48,13 @@
                   <input type="radio" name="size" id="size" value="XL">&nbsp;
                   <span class="checkmark" style="background-color: rgba(0, 0, 0, 0.5);">XL</span>
                 </label>
-              <button class="btn btn-add-cart" style="border: none;margin: 20px 0px; background: #000000; color: #FFFFFF;height: 40px;width: 200px;" type="submit" >Thêm vào giỏ hàng</button>
+                {{!-- {{#ifEquals product.qty 0}}
+                  <button class="btn btn-add-cart" style="border: none;margin: 20px 0px; background: #000000; color: #FFFFFF;height: 40px;width: 200px;" type="submit" >het hang</button>
+
+                {{/if}} --}}
+                <button id="button-addCart" onclick="checkQty()" class="btn btn-add-cart" style="border: none;margin: 20px 0px; background: #000000; color: #FFFFFF;height: 40px;width: 200px;" type="submit" >Thêm vào giỏ hàng</button>
+                <label id="label-addCart" class="btn btn-add-cart" style="border: none;margin: 20px 0px; background: #000000; color: #FFFFFF;height: 40px;width: 200px;display: none; " >Hết hàng</label>
+
             </form>
             
         </div>
@@ -69,12 +75,28 @@
     });
   }); --}}
 <script>
-  
+  if({{product.qty}} == 0){
+      var $ = document.getElementById("button-addCart");
+      var $$ = document.getElementById("label-addCart");
+      $.style.display = "none";
+      $$.style.display = "block";
+   }
+    
+  function checkQty(){
+     if({{product.qty}} == 0){
+      var $ = document.getElementById("button-addCart");
+      var $$ = document.getElementById("label-addCart");
+      $.style.display = "none";
+      $$.style.display = "block";
+   }
+  }
+
+
   function showImg(img){
     var mainImg = document.getElementsByClassName('mainImg')[0];
     
-    var $$ = document.getElementsByClassName('img-show');
-    for (const element of $$) {
+    var $$$ = document.getElementsByClassName('img-show');
+    for (const element of $$$) {
       if(element == img){
         mainImg.setAttribute("src", element.src);
         break;
