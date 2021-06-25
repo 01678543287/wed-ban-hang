@@ -11,10 +11,9 @@
         </div>
         <div style="padding: 0 20%;">
             <h1>Vui lòng điền thông tin</h1>
-            {{!-- <h4>Tổng Tiền: {{total}}</h4> --}}
-            {{!-- <div id="charge-error" class="alert alert-danger {{#if noError}}hidden{{/if}}">
+            <div id="charge-error" class="alert alert-danger {{#if noErrors}}hidden{{/if}}">
                 {{errMsg}}
-            </div> --}}
+            </div>
             <form action="/checkout/final" method="POST" >
                 <div class="row" style="flex-direction: column;">
                    

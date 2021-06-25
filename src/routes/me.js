@@ -12,5 +12,6 @@ router.get('/trash/products', meController.trashProducts);
 router.get('/trash/categorys', meController.trashCategory);
 router.get('/blacklist/user', meController.blacklistUser);
 router.get('/stored/user', meController.storedUsers);
+router.get('/warehouse', meController.warehouse);
 router.get('/', meController.home);
 module.exports = router;

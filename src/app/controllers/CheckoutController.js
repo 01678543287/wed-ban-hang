@@ -13,7 +13,8 @@ class CheckoutController {
       return res.redirect('cart');
     }
     var cart = new Cart(req.session.cart);
-    res.render('checkout', {total: cart.totalPrice},);
+    var errMsg = req.flash('error')[0];
+    res.render('checkout', {total: cart.totalPrice, errMsg: errMsg, noErrors: !errMsg},);
     
   }
   //[POST] /checkout/final
@@ -36,11 +37,13 @@ class CheckoutController {
       phone: req.body.phone,
       email: req.body.email,
     });
-    //console.log(order)
     order
       .save()
-      .then(() => res.redirect('/'), req.session.cart = null)
-      .catch((error) => {});
+      .then(() => req.flash('success', 'Thanh toán thành công'),
+                  req.session.cart = null,
+                  res.redirect('/products'),
+      )
+      .catch((error) => {req.flash('error', 'Mua thất bại')},);
   } 
 }
 
