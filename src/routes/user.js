@@ -4,9 +4,9 @@ const router = express.Router();
 const {check, validationResult} = require('express-validator');
 const UserController = require('../app/controllers/UserController');
 
-router.delete('/:id', UserController.delete);
-router.delete('/:id/force', UserController.forceDelete);
-router.patch('/:id/restore', UserController.restore);
+router.delete('/:id', isAdmin, UserController.delete);
+router.delete('/:id/force', isAdmin, UserController.forceDelete);
+router.patch('/:id/restore', isAdmin, UserController.restore);
 router.get('/sign-up', notLoggedIn, UserController.create);
 router.get('/change-password', isLoggedIn, UserController.changePassword);
 router.post('/change-password', isLoggedIn,
@@ -81,3 +81,9 @@ function isLoggedIn(req, res, next){
     res.redirect('/user/sign-in');
 }
 
+function isAdmin(req, res, next){
+    if(req.isAuthenticated() && (req.user.isAdmin || (req.user.username === 'admin'))){
+        return next();
+    }
+    res.redirect('/');
+}

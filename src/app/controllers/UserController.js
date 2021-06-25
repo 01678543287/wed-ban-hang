@@ -96,7 +96,7 @@ class UserController {
     // [POST] user/forgot-password
     validPassword(req, res, next){
         if(req.query.hasUsername == 'true' && req.query.hasUser == 'false'){
-            User.findOne({username : req.params.username}, function(err, user){
+            User.findOne({username : req.body.username}, function(err, user){
                 if(user != null){
                     verification = randomString(6);
                     sendEmail(user.email, verification);
@@ -104,7 +104,7 @@ class UserController {
                     res.render('user/forgot-password',{
                         hasUser : true,
                         hasUsername: true,
-                        username : req.params.username,
+                        username : req.body.username,
                         email : user.email,
                     })
                 }
@@ -112,28 +112,28 @@ class UserController {
                     res.render('user/forgot-password',{
                         hasUser : false,
                         hasUsername : true,
-                        username : req.params.username,
+                        username : req.body.username,
                     })
                 }
                 
             })
         }
         if(req.query.hasUsername == 'true' && req.query.hasUser == 'true'){
-            User.findOne({username : req.params.username}, function(err, user){
-                if(user.validVerification(req.params.verification)){
+            User.findOne({username : req.qurey.username}, function(err, user){
+                if(user.validVerification(req.body.verification)){
                     res.render('user/forgot-password',{
                         hasUser :true,
                         hasUsername : true,
                         isValid : true,
-                        username : req.params.username,
+                        username : req.query.username,
                     })
                 }
-                if(!user.validVerification(req.params.verification)){
+                if(!user.validVerification(req.body.verification)){
                     res.render('user/forgot-password',{
                         hasUser :true,
                         hasUsername : true,
                         isValid : false,
-                        username : req.params.username,
+                        username : req.query.username,
                     })
                 }
             })

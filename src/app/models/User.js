@@ -14,7 +14,8 @@ const User = new Schema({
     address: {type: String},
     email: {type: String},
     name: {type: String},
-    verification : {type: String}
+    verification : {type: String},
+    isAdmin : {type:String}
   },
   {
     timestamps: true
