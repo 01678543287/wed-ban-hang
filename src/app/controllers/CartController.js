@@ -62,7 +62,10 @@ class CartController {
       var productId = req.params.id;
       var cart = new Cart(req.session.cart ? req.session.cart:{products: {}});
 
+      Product.updateOne({_id: productId},{ $inc: { qty: cart.totalQty,} })
+            .then();
       cart.removeAll(productId);
+      
       req.session.cart = cart;
       res.redirect('back');
     };
