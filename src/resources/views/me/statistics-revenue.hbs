@@ -12,7 +12,8 @@
             <option value="year">Thống kê theo Năm</option>
         </select>
         <br>
-        <a href="" id="btn-statistical"><button type="submit"  onclick="functionStatistical()" class="button-w">Thống kê</button></a>
+        <button id="btn-statistical" type="submit"  onclick="functionStatistical()" class="button-w">Thống kê</button>
+         <button id="btn-download" onclick="downloadData()" class="button-w">Download</button>
     </div>
 
     <table id="table-w" class="table mt-4">
@@ -68,9 +69,10 @@
     var yr = day.getFullYear();
 
     var type = "day";
-    var button = document.getElementById('btn-statistical');
-    button.href = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
-
+    var buttonDownload = document.getElementById('btn-download');
+    var buttonStatistics = document.getElementById('btn-statistical');
+    var buttonStatisticsHref = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
+    var buttonDownloadHref = ("/me/statistics/revenue/excel?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
 
     // catch even
     function myDate(){
@@ -80,7 +82,9 @@
         d = mydate.getDate();
         mth = mydate.getMonth() + 1;
         yr = mydate.getFullYear();
-        button.href = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
+        buttonStatisticsHref = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
+        buttonDownloadHref = ("/me/statistics/revenue/excel?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);     
+
     }
 
     function myOption(){
@@ -93,11 +97,16 @@
         type = select.options[i].value;
         select.options[i].selected = "true";
 
-
-        button.href = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
+        buttonStatisticsHref = ("/me/statistics/revenue?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);
+        buttonDownloadHref = ("/me/statistics/revenue/excel?"+"year="+yr+"&month="+mth+"&day="+d +"&type="+type);     
        
     }
-
+    function downloadData(){
+        window.location.href = buttonDownloadHref;
+    }
+    function functionStatistical(){
+        window.location.href = buttonStatisticsHref;
+    }
 
 </script>
 
