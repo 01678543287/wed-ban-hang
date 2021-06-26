@@ -74,10 +74,13 @@
                             <td>{{this.item.name}}</td>
                             <td>
                                 <a href="/cart/{{this.item._id}}/reduce" class="btn btn-Reduce font-weight-bold mr-4">-</a>
-                                {{this.qty}}
-                                <a href="/cart/{{this.item._id}}/add" class="btn btn-Reduce font-weight-bold ml-4">+</a>
+                                    {{this.qty}}
+                                    {{this.item.qty}}
+                                
+                                <a href="/cart/{{this.item._id}}/add" onclick="checkQuanty()" class="btn btn-Reduce font-weight-bold ml-4">+</a>
                                 
                             </td>
+                      
                             <td>{{this.size}}</td>
                             <td>{{this.price}}đ</td>
                             <td>
@@ -122,3 +125,10 @@
     </div>
 </div>
 {{/if}}
+
+<script>
+    {{!-- hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+    }); --}}
+
+</script>
