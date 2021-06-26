@@ -81,14 +81,11 @@ class MeController {
     storedAdminAccount(req, res, next){
         User.findOneWithDeleted({ 'username': req.body.username })
             .then(user => {
-                console.log(12345)
                 if (user) {
                     res.render('me/created-admin-account',{
                         message : 'Tên đăng nhập đã được sử dụng.'
                     })
                 }
-                console.log(123456);
-                console.log(req.body.username)
                 var newUser= new User();
                 newUser.username = req.body.username;
                 newUser.password = newUser.encryptPassword(req.body.password);
