@@ -64,6 +64,13 @@ app.engine(
     handlebars({
         extname: '.hbs',
         helpers: {
+            notEqual :function(arg1, arg2, options) {
+                 return (arg1 != arg2) ? options.fn(this) : options.inverse(this);
+                } ,
+            equal :function(arg1, arg2, options) {
+                 return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+                } ,
+            
             sum: (a,b) => a + b,
             formatDate : (date) => moment(date).format("DD/MM/YYYY")
         }

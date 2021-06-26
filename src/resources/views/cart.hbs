@@ -68,17 +68,21 @@
                         </tr>
                  </thead>
                   <tbody>
-                     {{#each products}}
+                     {{#each products as |value key|}}
                         <tr>
                             <td scope="row">{{sum @index 1}}</td>
                             <td>{{this.item.name}}</td>
                             <td>
+                                
                                 <a href="/cart/{{this.item._id}}/reduce" class="btn btn-Reduce font-weight-bold mr-4">-</a>
                                     {{this.qty}}
-                                    {{this.item.qty}}
-                                
-                                <a href="/cart/{{this.item._id}}/add" onclick="checkQuanty()" class="btn btn-Reduce font-weight-bold ml-4">+</a>
-                                
+                                    {{#equal this.qty this.item.qty}}
+			                            <label id="lbelCheck" class="btn btn-Reduce font-weight-bold ml-4" style="opacity: 0.5;">+</label>
+
+                                    {{/equal}}
+                                    {{#notEqual this.qty this.item.qty}}
+                                       <a href="/cart/{{this.item._id}}/add" class="btn btn-Reduce font-weight-bold ml-4">+</a>
+                                    {{/notEqual}}                                                      
                             </td>
                       
                             <td>{{this.size}}</td>
@@ -127,8 +131,6 @@
 {{/if}}
 
 <script>
-    {{!-- hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
-    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
-    }); --}}
+    document.getElementById('')
 
 </script>
