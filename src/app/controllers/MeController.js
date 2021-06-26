@@ -73,35 +73,38 @@ class MeController {
             }))
             .catch(next);
     }
-    // [GET] user/admin/create
+    // [GET] me/admin/create
     createdAdminAccount(req, res, next){
         res.render('me/created-admin-account')
     }
-    // [POST] user/admin/create
+    // [POST] me/admin/create
     storedAdminAccount(req, res, next){
-        User.findOneWithDeleted({ 'username': username }, function(err, user) {
-            if (err) { return done(err); }
-            if (user) {
-                res.render('me/created-admin-account',{
-                    message : 'Tên đăng nhập đã được sử dụng.'
+        User.findOneWithDeleted({ 'username': req.body.username })
+            .then(user => {
+                console.log(12345)
+                if (user) {
+                    res.render('me/created-admin-account',{
+                        message : 'Tên đăng nhập đã được sử dụng.'
+                    })
+                }
+                console.log(123456);
+                console.log(req.body.username)
+                var newUser= new User();
+                newUser.username = req.body.username;
+                newUser.password = newUser.encryptPassword(req.body.password);
+                newUser.name = req.body.name;
+                newUser.email = req.body.email;
+                newUser.phonenumber = req.body.phonenumber;
+                newUser.isAdmin = true;
+                newUser.save(function(err, result){
+                    if(err){
+                        return done(err)
+                    }
+                    res.render('me/created-admin-account',{
+                        message : 'Tạo tài khoản admin thành công'
+                    })
                 })
-            }
-            var newUser= new User();
-            newUser.username = req.body.username;
-            newUser.password = newUser.encryptPassword(req.body.password);
-            newUser.name = req.body.name;
-            newUser.email = req.body.email;
-            newUser.phonenumber = req.body.phonenumber;
-            newUser.isAdmin = true;
-            newUser.save(function(err, result){
-            if(err){
-                return done(err)
-            }
-            res.render('me/created-admin-account',{
-                message : 'Tạo tài khoản admin thành công'
             })
-           })
-        })
     }
     //[GET] /me/stored/users
     storedUsers(req, res, next) {
